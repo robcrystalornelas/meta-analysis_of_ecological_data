@@ -1,0 +1,29 @@
+--- 
+title: "Meta-analysis of Ecological Data in R"
+author: "Rob Crystal-Ornelas, PhD"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+  #bookdown::pdf_book: default
+documentclass: book
+# bibliography: [book.bib, packages.bib]
+# biblio-style: apalike
+# link-citations: yes
+github-repo: robcrystalornelas/meta-analysis_of_ecological_data
+description: "This is a book about how to use R for the meta-analysis of ecological data"
+delete_merged_file: true
+---
+
+# Preface to the book {-}
+
+## Motivation for this book {-}
+
+## Intro to the data {-}
+
+## Acknowledgements {-}
+
+```{r}
+plot(cars)
+```
+
+Testing making a plot using this code.
