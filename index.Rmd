@@ -6,24 +6,33 @@ site: bookdown::bookdown_site
 output: bookdown::gitbook
   #bookdown::pdf_book: default
 documentclass: book
-# bibliography: [book.bib, packages.bib]
-# biblio-style: apalike
-# link-citations: yes
+bibliography: [ma_ecology_book.bib]
+biblio-style: apalike
+link-citations: yes
 github-repo: robcrystalornelas/meta-analysis_of_ecological_data
 description: "This is a book about how to use R for the meta-analysis of ecological data"
 delete_merged_file: true
 ---
 
-# Preface to the book {-}
+# Preface {-}
+
+```{r, echo = FALSE, fig.align="center", out.width="300px"}
+knitr::include_graphics("MAEDR_sticker.png")
+```
 
 ## Motivation for this book {-}
 
+We created this book as a guide to conducting meta-analysis using ecological data in R.  Ecologists are increasingly turning to evidence synthesis (i.e., systematic review and meta-analysis) as a way of describing and summarizing the published evidence base within sub-disciplines.  There are helpful books that provide the theory behind meta-research in ecology [@koricheva_handbook_2013]. There are also more technical guides that provide the R code for conducting meta-analyses, but these are typically built around datasets and methodology in medical [@schwarzer_meta-analysis_2015]or social sciences [@harrer_doing_2019]. We are excited to provide a guide for those conducting a meta-analysis in R using ecological data.  We present methods that we have used in our own research, and of course indicate where we have built upon the work of other meta-researchers regardless of their primary field of investigation.
+
 ## Intro to the data {-}
 
+The data we use in this book come from a meta-analysis by one of the co-authors (RCO) and his PhD advisor Dr. Julie Lockwood [@crystal-ornelas_cumulative_2020]. The data are the result of a systematic search for articles that investigate how invasive species native species richness. Language is particularly important to the field of invasion ecology [@mattingly_disconnects_2020], and so we start by describing what we mean when we say **invasive species**. The dataset contains information from ??Articles on ?? species of invasive trees. These trees havebeen intentionally or unintentionally moved to a new location from their native location.  The invasive trees have established local populations, spread from this location and are now affecting their surrounding ecosystems in the new sites.
+
+For more information about invasive species, we provide couple of references  the authors find helpful.
+
+- *Invasion Ecology* [@lockwood_invasion_2013]
+- *Encyclopedia of Bioloigcal Invasions* [@simberloff_encyclopedia_2011]
+
+--- 
 ## Acknowledgements {-}
-
-```{r}
-plot(cars)
-```
-
-Testing making a plot using this code.
+This book was created using the **bookdown** [@xie_bookdown_2019].
