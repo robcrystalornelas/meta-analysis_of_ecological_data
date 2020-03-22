@@ -17,7 +17,7 @@ delete_merged_file: true
 # Preface {-}
 
 ```{r, echo = FALSE, fig.align="center", out.width="300px"}
-knitr::include_graphics("MAEDR_sticker.png")
+knitr::include_graphics("https://drive.google.com/uc?id=1nAIuFRpLwwm_YU1bxBX6fHOVRAm971ar")
 ```
 
 ## Motivation for this book {-}
