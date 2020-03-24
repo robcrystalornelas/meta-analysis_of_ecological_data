@@ -16,7 +16,7 @@ delete_merged_file: true
 
 # Preface {-}
 
-```{r, echo = FALSE, fig.align="center", out.width="300px"}
+```{r, echo = FALSE, fig.align="center", out.width="250px"}
 knitr::include_graphics("https://drive.google.com/uc?id=1nAIuFRpLwwm_YU1bxBX6fHOVRAm971ar")
 ```
 
@@ -33,6 +33,53 @@ For more information about invasive species, we provide couple of references  th
 - *Invasion Ecology* [@lockwood_invasion_2013]
 - *Encyclopedia of Bioloigcal Invasions* [@simberloff_encyclopedia_2011]
 
+### The data {-}
+Here, we import the data from google drive, and we can see from the output the classes of data (i.e., character or double) that R thinks our .csv file contains.
+```{r}
+require(tidyverse)
+require(cowplot)
+url_for_data <- "https://drive.google.com/uc?id=1eL9f8pirn8TBhyuOs39Lfcpd3TYruvDG"
+meta_analysis_data <- read_csv(url_for_data)
+```
+Next, let's inspect the data a bit, before we dive into the meta-analysis.  As you can see from the code above, and the CSV file if you open it up, there are 17 different variables, or columns, in our newly imported dataframe. Some of the varaibles are the categorical pieces of data that we extracted from the articles that describe the article itself or the study's focial invasive species.
+
+For example, we can see the most frequently studied invasive tree species in our database.
+
+```{r echo=FALSE, eval=FALSE}
+head(meta_analysis_data)
+species_counted <- as.data.frame(dplyr::count(meta_analysis_data, invasive_species_common_name))
+species_ordered <- arrange(species_counted, desc(n))
+head(species_ordered)
+species_ordered
+species_ordered <- dplyr::rename(species_ordered, count = n)
+species_ordered$invasivespecies <- factor(species_ordered$invasive_species_common_name, levels = species_ordered$invasive_species_common_name[order(-species_ordered$count)])
+dim(species_counted)
+
+top_ten_species <- slice(species_ordered, 1:10)
+top_ten_species <-as.data.frame(top_ten_species)
+top_ten_species
+head(top_ten_species)
+top_ten_species$invasivespecies <- factor(top_ten_species$invasivespecies, levels = top_ten_species$invasivespecies[order(-top_ten_species$count)])
+species_ordered
+
+#Figure for top 10 invasives
+gg <- ggplot(data = top_ten_species, aes(x=invasivespecies, y = count))
+gg <- gg + geom_bar(stat="identity", fill = "#2D708EFF")
+gg
+gg <- gg + ylab("Frequency")
+gg <- gg + xlab("Invasive Species")
+gg <- gg + theme_cowplot() +
+  scale_y_continuous(expand = c(0, 0), limits = c(0, 18))
+gg <- gg + theme(axis.text=element_text(size=15),
+                 axis.text.x = element_text(angle = 90, hjust = 0.95, vjust = .5),# Change tick mark label size
+                 axis.title=element_text(size=20),
+                 strip.text = element_text(size=12)) # Change axis title size
+```
+```{r gg, echo=FALSE}
+gg
+```
+
 --- 
 ## Acknowledgements {-}
-This book was created using the **bookdown** [@xie_bookdown_2019].
+This book was created using the **bookdown** [@xie_bookdown_2019]. Thanks to the [Lockwood Lab](https://www.lockwoodlab.com).
+
