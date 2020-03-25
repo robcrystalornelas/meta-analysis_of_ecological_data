@@ -1,3 +1,18 @@
-# Introduction {#intro}
+# Starting a meta-analysis
 
-This is the first chapter.
+## Systematic search
+Every meta-analysis begins with a systemtatic process by which the person conducting the meta-analysis attempts to locate all articles related to the topic they are investigating.  Below, I outline the the general steps of the systematic search process **in bold**, and then provide how one might approach a systematic search for example data we use in this book below each step.
+
+**1. pick a topic you want to investigate**
+
+How do invasive trees impact the alpha diversity (aka species richness) of native species
+
+**2. pick a search engine**
+
+Determine the search engines you will use (Google Scholar, the CABI database, Web of Science). Be sure to keep in mind whether the search engines contain articles from a limited number of years or subjects.
+
+
+## Article screening
+PRISMA with inclusion criteria
+
+## Data extraction
