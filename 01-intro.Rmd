@@ -3,6 +3,11 @@
 ## Systematic search
 Every meta-analysis begins with a systemtatic process by which the person conducting the meta-analysis attempts to locate all articles related to the topic they are investigating.  Below, I outline the the general steps of the systematic search process **in bold**, and then provide how one might approach a systematic search for example data we use in this book below each step.
 
+
+```{r, echo = FALSE, fig.align="center", out.width="350px"}
+knitr::include_graphics("https://drive.google.com/uc?id=1sQBNAy7WPr8S8kK5cO-4mLjysBfmRuQb")
+```
+
 **1. pick a topic you want to investigate**
 
 How do invasive trees impact the alpha diversity (aka species richness) of native species

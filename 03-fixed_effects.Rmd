@@ -1,0 +1,35 @@
+# Fixed effects meta-analysis
+
+
+## A brief introduction to Fixed effects models in meta-analysis
+The first type of model that many meta-analysts use is called a fixed effects model.  Fixed effects models have strict assumptions about the broader population that the samples in a dataset come from.
+
+Fixed effects models assume that the samples (the effect sizes in our database) come from *the same underlying population*. We note that, depending on the research question and subject, the definition of *underlying population* may differ. However, ecological meta-research often synthesizes data from a vareity of study designs, focal species, or ecosystems that the requirements for fixed effects models are often too stringent to apply ecological data.  
+
+Nevertheless, fixed effects models provide a useful starting node for our journey through ecological meta-analysis because many of the methods build off the inital fixed-effects framework.
+
+
+## Fixed effects model example
+
+Having previously run the code in earlier chapters, you should have the necesary objects loaded in your R environment.
+
+Now, let's make sure R libraries are loaded
+```{r}
+require(metafor)
+```
+
+
+```{r}
+# Fixed effects model
+# fixed_effect_model_results <- rma(yi, # outcome
+#                                   vi, # measure of variance
+#                                   method = "FE",
+#                                   data = effect_sizes_richness,
+#                                   slab = paste(lastname, publicationyear, sep = ""))
+# fixed_effect_model_results
+```
+
+
+
+
+
