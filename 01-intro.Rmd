@@ -1,23 +1,80 @@
 # Starting a meta-analysis
 
 ## Systematic search
-Every meta-analysis begins with a systemtatic process by which the person conducting the meta-analysis attempts to locate all articles related to the topic they are investigating.  Below, I outline the the general steps of the systematic search process **in bold**, and then provide how one might approach a systematic search to locate the example data we use in this book.  Of course, it is essential to outline as much of the meta-analytic process before conducting the analysis--this helps to avoid bias in the articles we
-
+Every meta-analysis begins with a systemtatic process by which the person conducting the meta-analysis attempts to locate all articles related to the topic they are investigating.  Below, I outline the the general steps of the systematic search process **in bold**, and then provide how one might approach a systematic search to locate the example data we use in this book. One of my favorite figures that shows all of the steps in meta-analysis and systematic review can be found in the first chapter of [@koricheva_handbook_2013]. They stress that much of the effort that goes into meta-analysis happens in the planning and article locating phase. It is essential to outline as much of the meta-analytic process as you can before conducting the analysis--this helps to avoid bias in the articles, analyses, and conclusions we make during the investigation.
 
 ```{r, echo = FALSE, fig.align="center", out.width="350px", fig.cap = "A helpful reminder from Drake"}
 knitr::include_graphics("https://drive.google.com/uc?id=1sQBNAy7WPr8S8kK5cO-4mLjysBfmRuQb")
 ```
 
-**1. pick a topic you want to investigate**
+**1. Pick a topic you want to investigate**
 
-How do invasive trees impact the alpha diversity (aka species richness) of native species
+Your first step as a meta-analyst is the pick the topic you want to investigate.  What is the question you want to ask in your research? In my experience, there are  so many un-asked questiosn when we think of them through a meta-analytic framework. Of course, when conducting a meta-analysis we need enough published or un-published aritcles to synthesize data in order to conduct the analysis. But for now, let your imagination run wild! Following the steps we outline below will help you to determine whether there is enough research available on the topic to do a meta-analysis.
 
-**2. pick a search engine**
+To get ideas for meta-research projects you might start with these sources:  
 
-Determine the search engines you will use (Google Scholar, the CABI database, Web of Science). Be sure to keep in mind whether the search engines contain articles from a limited number of years or subjects.
+* Reading or re-reading some meta-research in your discipline and identifying what they see as avenues for new meta-research.
+* One of my favorite ways of generating new research quesitons is by reading meta-analyses in the social or medical sciences to see what questions they ask, and then considering applying thenm to ecological data.
+* Check out some data repositories like [figshare](https://figshare.com/) or [dryad](https://datadryad.org/stash) to see what data have researchers kindly made publicly available.
+* The *Ecology* preprint collection on [bioRxiv](https://www.biorxiv.org/collection/ecology) has a lot of cutting edge research that may spark some ideas for research project.
 
+*Applying this to our example data*  
+During my PhD, I became fascinated with invasive species and their impacts on the natural environment.  Meta-research in ecology, and specifically invasion ecology has grown over the past decade or so, yet I noticed that few meta-analyses provided a comprehensive evaluation of the magnitude of impact that many different species from a variety of invasive taxa can have on biodiversity. Impacts on diversity are frequently studied in invasion ecology [@crystal-ornelas_known_2020], so I had a suspicion that I would find plenty of data to conduct a meta-analysis on this topic.
+
+Because this book will use a slice of the larger database RCO compiled, we provide a slightly narrower research question than RCO outlined in his article that this work is based on.  For the purposes of this book, we ask:
+
+How do invasive trees impact the species richness (aka alpha diversity) of native species.  
+
+**2. pick a search engine and search terms**  
+
+The next step is to decide on the search engines and databases you will use (Google Scholar, the CABI database, Web of Science) to locate articles relevant to your research topic.
+
+Database | Pros | Cons
+---------|------|------
+[Google Scholar](https://www.scholar.google.com) | Free to search and accesss to large number of scientific articles | Overwhelming number of search hits
+[Web of Science](https://www.webofknowledge.com)| Ability to filter articles by subject matter | Institutional access required
+[CAB Direct](https://www.cabi.org/publishing-products/cab-abstracts/) | Good article filtering and contains many relevant articles for ecology | Institutional access required and search can large number of hits
+
+*Applying this to our example data*  
+For this meta-analysis, we used the Web of Science database to locate articles on invasive species impacts.  Due to time constraints, we couldn't include all three of the databases above.  The number of articles Web of Science alone returned took about a couple of years to sift through. That being said, we did our best to capture as many invasion impact  articles as possisble by developing broad search terms.
+
+If you are going to use Google Scholar or CAB Direct, you may want to implement methods used by [@crystal-ornelas_meta-analysis_nodate; @wang_wei_citizen_2016] which select only the first 700 or 1000 articles returned from Google Scholar.  
+
+**3. Search terms**  
+After deciding on the search engine(s) you will use, you need to develop the search terms you'll use to locate articles within each database. You should aim to design a search that is completely repeatable by anyone who reads your manuscript.  This means not only specifying the terms you search, but also any ways that you filter the search results (e.g., date, language, topic).  
+
+When deciding on search terms you should attempt to capture every or, nearly every, published/unpublished article that is relevant to your research question. By making a search comprehensive, we avoid introducing bias into our meta-analysis [@gough_introduction_2012]. Sometimes I like to think of this part of the process in terms of balancing *sensitivity* vs. *specificity*.  We can leave the *specificity* (i.e., identifying the exactly right article we want in our meta-analysis until later). In the systematic search phase of our meta-analysis, we want to cast a wide net and capture every article, and search through every database we deem relevant as long as time permits.
+
+In many of the databases you will use, boolean searches will be the most effective way to locate relevant articles.  Harvard's library put together a quick guide to boolean searches [here](https://guides.library.harvard.edu/c.php?g=310028&p=2070670). The most common boolean "operators" are the words AND as well as OR. So, here's how to use them.  If we wanted to locate articles about a *smiling axolotl* and we wanted to make sure that the articles contained both the words "smiling" and "axolotl" we would link up those two words in our search with the word AND. 
+
+>axolotl AND smiling
+
+But then we realize that there are lots of synonyms for smiling, and we don't want to miss those in our search. This is where OR comes in.  In this case, the articles would have to contain the word `axolotl` and they also must contain the word `smiling` OR `grinning`. That boolean phrase looks like this 
+
+>axolotl AND smiling OR grinning  
+
+```{r, echo = FALSE, fig.align="center", out.width="350px", fig.cap = "Requisite photo of smiling axolotl"}
+knitr::include_graphics("https://wonderopolis.org/wp-content/uploads/2019/05/Pink_1.jpg")
+```
+
+*Applying this to our example data*  
+
+As a reminder, we used Web of Science to search for articles about invasive species impacts. We use the topic search function that Web of Science provides. When you search topics you are actually searching for your terms in all article titles, abstracts and keywords.  For our systematic search, we used the following search terms.
+
+>TOPIC = invasive AND impact`*`; introduced species AND
+impact`*`; non-native AND impact`*`; exotic
+AND impact`*`; alien AND impact`*`; naturalized
+AND impact`*`; non-indigenous AND
+impact`*`
+
+Rather than using the OR operator, we divided up our searches, but we easily could have linked up the synonyms for invasive with the OR operator.  Note that we also included asterisks at the end of the work impact. The asterisk at the end of any word let's the search know you want the word as you've type it, and any other words that have different ending letters. So our search above captured articles that used the word *impact* as well as *impacts*, *impacted*, and *impacting*.
+
+This systematic search of Web of Science yielded over 23,000 potential articles!
 
 ## Article screening
-PRISMA with inclusion criteria
+After you find the set of candidate articles for your meta-analysis it's time to sort through all of the articles and determine which will be useful for your meta-analysis. PRISMA with inclusion criteria
+
+*Applying this to our example data*  
 
 ## Data extraction
+*Applying this to our example data*  
