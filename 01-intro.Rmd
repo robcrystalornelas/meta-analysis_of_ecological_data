@@ -1,7 +1,7 @@
 # Starting a meta-analysis
 
 ## Systematic search
-Every meta-analysis begins with a systemtatic process by which the person conducting the meta-analysis attempts to locate all articles related to the topic they are investigating.  Below, I outline the the general steps of the systematic search process **in bold**, and then provide how one might approach a systematic search to locate the example data we use in this book. One of my favorite figures that shows all of the steps in meta-analysis and systematic review can be found in the first chapter of [@koricheva_handbook_2013]. They stress that much of the effort that goes into meta-analysis happens in the planning and article locating phase. It is essential to outline as much of the meta-analytic process as you can before conducting the analysis--this helps to avoid bias in the articles, analyses, and conclusions we make during the investigation.
+Every meta-analysis begins with a systematic process by which the person conducting the meta-analysis attempts to locate all articles related to the topic they are investigating.  Below, I outline the the general steps of the systematic search process **in bold**, and then provide how one might approach a systematic search to locate the example data we use in this book. One of my favorite figures that shows all of the steps in meta-analysis and systematic review can be found in the first chapter of [@koricheva_handbook_2013]. They stress that much of the effort that goes into meta-analysis happens in the planning and article locating phase. It is essential to outline as much of the meta-analytic process as you can before conducting the analysis--this helps to avoid bias in the articles, analyses, and conclusions we make during the investigation.
 
 ```{r, echo = FALSE, fig.align="center", out.width="350px", fig.cap = "A helpful reminder from Drake"}
 knitr::include_graphics("https://drive.google.com/uc?id=1sQBNAy7WPr8S8kK5cO-4mLjysBfmRuQb")
@@ -9,12 +9,12 @@ knitr::include_graphics("https://drive.google.com/uc?id=1sQBNAy7WPr8S8kK5cO-4mLj
 
 **1. Pick a topic you want to investigate**
 
-Your first step as a meta-analyst is the pick the topic you want to investigate.  What is the question you want to ask in your research? In my experience, there are  so many un-asked questiosn when we think of them through a meta-analytic framework. Of course, when conducting a meta-analysis we need enough published or un-published aritcles to synthesize data in order to conduct the analysis. But for now, let your imagination run wild! Following the steps we outline below will help you to determine whether there is enough research available on the topic to do a meta-analysis.
+Your first step as a meta-analyst is the pick the topic you want to investigate.  What is the question you want to ask in your research? In my experience, there are  so many un-asked questions when we think of them through a meta-analytic framework. Of course, when conducting a meta-analysis we need enough published or un-published articles to synthesize data in order to conduct the analysis. But for now, let your imagination run wild! Following the steps we outline below will help you to determine whether there is enough research available on the topic to do a meta-analysis.
 
 To get ideas for meta-research projects you might start with these sources:  
 
 * Reading or re-reading some meta-research in your discipline and identifying what they see as avenues for new meta-research.
-* One of my favorite ways of generating new research quesitons is by reading meta-analyses in the social or medical sciences to see what questions they ask, and then considering applying thenm to ecological data.
+* One of my favorite ways of generating new research questions is by reading meta-analyses in the social or medical sciences to see what questions they ask, and then considering applying them to ecological data.
 * Check out some data repositories like [figshare](https://figshare.com/) or [dryad](https://datadryad.org/stash) to see what data have researchers kindly made publicly available.
 * The *Ecology* preprint collection on [bioRxiv](https://www.biorxiv.org/collection/ecology) has a lot of cutting edge research that may spark some ideas for research project.
 
@@ -31,12 +31,12 @@ The next step is to decide on the search engines and databases you will use (Goo
 
 Database | Pros | Cons
 ---------|------|------
-[Google Scholar](https://www.scholar.google.com) | Free to search and accesss to large number of scientific articles | Overwhelming number of search hits
+[Google Scholar](https://www.scholar.google.com) | Free to search and access to large number of scientific articles | Overwhelming number of search hits
 [Web of Science](https://www.webofknowledge.com)| Ability to filter articles by subject matter | Institutional access required
 [CAB Direct](https://www.cabi.org/publishing-products/cab-abstracts/) | Good article filtering and contains many relevant articles for ecology | Institutional access required and search can large number of hits
 
 *Applying this to our example data*  
-For this meta-analysis, we used the Web of Science database to locate articles on invasive species impacts.  Due to time constraints, we couldn't include all three of the databases above.  The number of articles Web of Science alone returned took about a couple of years to sift through. That being said, we did our best to capture as many invasion impact  articles as possisble by developing broad search terms.
+For this meta-analysis, we used the Web of Science database to locate articles on invasive species impacts.  Due to time constraints, we couldn't include all three of the databases above.  The number of articles Web of Science alone returned took about a couple of years to sift through. That being said, we did our best to capture as many invasion impact  articles as possible by developing broad search terms.
 
 If you are going to use Google Scholar or CAB Direct, you may want to implement methods used by [@crystal-ornelas_meta-analysis_nodate; @wang_wei_citizen_2016] which select only the first 700 or 1000 articles returned from Google Scholar.  
 
@@ -45,11 +45,11 @@ After deciding on the search engine(s) you will use, you need to develop the sea
 
 When deciding on search terms you should attempt to capture every or, nearly every, published/unpublished article that is relevant to your research question. By making a search comprehensive, we avoid introducing bias into our meta-analysis [@gough_introduction_2012]. Sometimes I like to think of this part of the process in terms of balancing *sensitivity* vs. *specificity*.  We can leave the *specificity* (i.e., identifying the exactly right article we want in our meta-analysis until later). In the systematic search phase of our meta-analysis, we want to cast a wide net and capture every article, and search through every database we deem relevant as long as time permits.
 
-In many of the databases you will use, boolean searches will be the most effective way to locate relevant articles.  Harvard's library put together a quick guide to boolean searches [here](https://guides.library.harvard.edu/c.php?g=310028&p=2070670). The most common boolean "operators" are the words AND as well as OR. So, here's how to use them.  If we wanted to locate articles about a *smiling axolotl* and we wanted to make sure that the articles contained both the words "smiling" and "axolotl" we would link up those two words in our search with the word AND. 
+In many of the databases you will use, Boolean searches will be the most effective way to locate relevant articles.  Harvard's library put together a quick guide to Boolean searches [here](https://guides.library.harvard.edu/c.php?g=310028&p=2070670). The most common Boolean "operators" are the words AND as well as OR. So, here's how to use them.  If we wanted to locate articles about a *smiling axolotl* and we wanted to make sure that the articles contained both the words "smiling" and "axolotl" we would link up those two words in our search with the word AND. 
 
 >axolotl AND smiling
 
-But then we realize that there are lots of synonyms for smiling, and we don't want to miss those in our search. This is where OR comes in.  In this case, the articles would have to contain the word `axolotl` and they also must contain the word `smiling` OR `grinning`. That boolean phrase looks like this 
+But then we realize that there are lots of synonyms for smiling, and we don't want to miss those in our search. This is where OR comes in.  In this case, the articles would have to contain the word `axolotl` and they also must contain the word `smiling` OR `grinning`. That Boolean phrase looks like this 
 
 >axolotl AND smiling OR grinning  
 
@@ -72,9 +72,77 @@ Rather than using the OR operator, we divided up our searches, but we easily cou
 This systematic search of Web of Science yielded over 23,000 potential articles!
 
 ## Article screening
-After you find the set of candidate articles for your meta-analysis it's time to sort through all of the articles and determine which will be useful for your meta-analysis. PRISMA with inclusion criteria
+After you identify the set of candidate articles for your meta-analysis it's time to sort through all of the articles and determine which will included in your meta-analysis. Your first step should be to delineate your **inclusion criteria**. These are a set of criteria that each of the articles must meet prior to inclusion into your meta-analysis.  
+
+In order to help shape the inclusion criteria, we recommend adhering to the **P**opulation, **T**reatment, **C**ontrol, **O**utcome (PTRO, or sometimes called the PICO) framework [@huang_evaluation_2006]. First, make a rule about the **population** that an article must focus on for you to include it in the meta-analysis. For example, will you include only studies that investigate invasive crayfish? Can these studies come from populations all over the world or only in the US? Next, identify the **treatment** you will focus on in your meta-analysis. This criteria is called treatment because the framework was developed for medical sciences. But we can thin of the treatment group as the experimental sites. For example, the treatment sites may receive extra nutrient input or an increased amount of deer herbivory.  Then you should develop a rule about the design of the **control** sites. For example, they may lack a certain nutrient input or experience lower levels of deer herbivory. Lastly, a rule about the focal **outcome** will help define the quantitative metrics you will eventually extract from each article. Following the examples from above, we may want to include only articles that measure dissolved Soil Organic Carbon or abundance of a certain flowering plant species.
+
+After deciding on your inclusion criteria, it's time to sort article and then determine whether you'll include the articles or exclude them based on you PTRO criteria (see above). We recommend using a Preferred reporting Items for Systematic review and Meta-Analysis flowchart (PRISMA). This flowchart allows for easy visualization of the major steps involved in sorting through articles. We recommend sorting through articles in 4 distinct steps. First, identify and remove any duplicate articles that you picked up during your systematic search. Duplicate articles are common if you searched in multiple databases. If you use a reference manager like [Zotero](https://www.zotero.org/) finding duplicates will be a breeze and really all steps of sorting will be more organized.
+
+Then move through articles always checking for consistency with your pre-defined inclusion criteria. First first by title, then abstract, then read the full text of the article and make a decision on whether to include or exclude the article. We recommend keeping track of the articles you exclude at each step using a reference manager like zotero (mentioned above and free) or endnote (great interface, but expensive). We also recommend using a Preferred Reporting Items for Systematic Review and Meta-Analysis (PRISMA) diagram for easily conveying your screening process to readers [@moher_preferred_2009]. Below is an example of a PRISMA flowchart that provides boxes in green that show the number of articles retained in each screening step and red boxes that show the number of articles excluded in each step. If you want to make your own PRISMA flowchart, we recommend either powerpoint or the R package `DiagrammeR` [@iannone_diagrammer_2018].
+
+```{r, echo=FALSE, fig.keep = "last", fig.cap = "Example of a PRISMA flowchart with 3 screening steps"}
+require(DiagrammeR)
+
+grViz("digraph flowchart {
+      # node definitions with substituted label text
+      node [fontname = Helvetica, shape = rectangle]
+      tab1 [label = '@@1']
+
+      node [fontname = Helvetica, shape = rectangle, color = MediumSeaGreen]
+      tab3 [label = '@@3']
+      tab5 [label = '@@5']
+      tab6 [label = '@@6']
+      tab7 [label = '@@7']
+
+      node [fontname = Helvetica, shape = rectangle, color = red]
+      tab2 [label = '@@2']
+      tab4 [label = '@@4']
+      tab8 [label = '@@8']
+      tab9 [label = '@@9']
+
+      # edge definitions with the node IDs
+      tab1 -> tab2;
+      tab1 -> tab3;
+      tab3 -> tab4;
+      tab3 -> tab5;
+      tab5 -> tab6;
+      tab6 -> tab7;
+      tab5 -> tab8;
+      tab6 -> tab9
+      }
+
+      [1]: 'Article identified in systematic search \\n (m = 1,000)'
+      [2]: 'Duplicates removed \\n(n = 100)'
+      [3]: 'Articles screened by titles \\n(n = 900)'
+      [4]: 'Removed after title screen \\n(n = 550)'
+      [5]: 'Articles screened by abstracts \\n(n = 350)'
+      [6]: 'Full text screened \\n(n = 100)'
+      [7]: 'Articles included in the meta-analysis \\n(n = 40)'
+      [8]: 'Removed after abstract screen \\n(n = 250)'
+      [9]: 'Removed after full text screen \\n(n = 60)'
+      ")
+```
 
 *Applying this to our example data*  
+
+In order to create the inclusion criteria for our example meta-analysis, we used on the PTCO frameworked described above. In the table below, I provide a shorthand name for each criteria in one column and then a more detailed rationale for the criteria in the next column. As in all steps of the meta-analysis, the goal is to provide enogh detail so that someone could repeat all the steps of the analysis if they want to.  
+
+Criteria | Rationale
+---------|------
+Oringal research (Population) | Include only primary published research
+Invaded sites (Treatment) | Articles must include sites with invasive species. If studies measure impacts of multiple invasive species, we count each species separately in our database
+Sites without invasive species (Control) | Experiments must have control sites without invasive species or with species at very low densities
+Measurements of species richness (Outcome) | Articles must provide mean measurement of richness at invaded and control sites ($\bar{X}$) as well as sample size (N) and measure of variation (s, $s^2$, or SE)
+
+Should you decide to use the PRISMA flowchart to organize your article screening process, here's an template of what the flowchart can include using example data from this book. At each screening step (green box) we indicate the nuber of articles screened. We also use red boxes to highlight the number of articles that we exclude at each screening step, and we also provide the most common reasons for exclusion.
+
+```{r, echo = FALSE, fig.align="center", out.width="350px", fig.cap = "Example PRISMA flowchart for invasive tree database"}
+knitr::include_graphics("https://drive.google.com/uc?id=1gssyo2jJCRkjSfb5Ifq1npN6pyQkGlth")
+
+```
+
+Note that you can modify any of the boxes to suite the needs of your screening protocol. We excluded 30 articles because they lacked any measurements of species richness. If your meta-analysis doesn't focus on species richness then you will likely have a different box to represent the outcome you need to conduct your meta-analysis.
+
 
 ## Data extraction
 *Applying this to our example data*  
