@@ -6,40 +6,60 @@ When we talk about effect sizes we make the distinction between **measurement ef
 
 There are many helpful texts and reviews that lay out the benefits and costs to using the many effect sizes that can be found in meta-analytic research.  One of the most popular packages for ecological meta-analysis, `metafor` allows for calculation of at least 15 effect sizes just by changing a few letters of you R code.  Please see these resources for more information on effect size options [@koricheva_handbook_2013, @schwarzer_meta-analysis_2015]. 
 
-Within the `metafor` package the `escalc` function handles calculating the measurement-level effect size calculations. Essentially the function takes in pairs data from both treatment (abbreviated by a "t") and control sites (abbreviated with a "c"). The paired data typically represents sample means ($\bar{x_t}$ and $\bar{x_c}$), standard deviations ($s_t$ and $s_c$), and sample sizes ($n_t$ and $n_c$). Using these paired data, `escalc` will output a single effect size and measurement of variance for each row (i.e., paired measurement in your database). 
+Within the `metafor` package the `escalc` function handles calculating the measurement-level effect size calculations. Essentially the function takes in pairs data from both treatment (abbreviated by a "t") and control sites (abbreviated with a "c"). The paired data typically represents sample means ($\bar{x_t}$ and $\bar{x_c}$), standard deviations ($s_t$ and $s_c$), and sample sizes ($n_t$ and $n_c$). Using these paired data, `escalc` will output a single effect size and measurement of variance for each row (i.e., paired measurement in your database).  
 
-Here's how the paired data appear in our example database. Take a look at the table below and scroll to the right. You'll find colums that contain all of the quantitative information that is necessary for calculating an effect size for each pair of measurements or rows in the database. The column `mean_contol` has the mean species richness at uninvaded sites, the next column, `sample_size_control` provides the number of control study sites, however the authors defined "study site" within their article. You will be able to locate $\bar{x}$, $s$, and $n$ for every invasive species included in the database.  When we are missing some necessary metric, this is most often standard deviation, we can use methods to impute missing values, however, these will be covered in a later chapter.
+Here's how the paired data appear in our example database. Take a look at the table below and scroll to the right. You'll find colums that contain all of the quantitative information that is necessary for calculating an effect size for each pair of measurements or rows in the database. The column `mean_contol` has the mean species richness at uninvaded sites, the next column, `sample_size_control` provides the number of control study sites, however the authors defined "study site" within their article. You will be able to locate $\bar{x}$, $s$, and $n$ for every invasive species included in the database.  When we are missing some necessary metric, this is most often standard deviation, we can use methods to impute missing values, however, these will be covered in a later chapter.  
 
 ```{r}
-require(DT)
+require(DT) #This package allows for scrollable tables in R Markdown
 datatable(meta_analysis_data, fillContainer = TRUE)
 ```
 
-Now, let's see how these calculations work with our example data.
+Now, let's see how we can use these date and the `escalc` function in the `metafor` package to calculate measurement-level effect sizes.  
 
-## Standardized Mean Difference (aka Hedges' g)
+## Standardized Mean Difference (aka Hedges' g)  
 
-The Standardized Mean Difference was one of the first effect sizes used in published meta-analyses [@hedges_statistical_1985] and it remains widely used in both ecological in medical meta- research [@crystal-ornelas_meta-analysis_nodate; @zavorka_negative_2018]. 
+The Standardized Mean Difference (SMD) was one of the first effect sizes used in published meta-analyses [@hedges_statistical_1985] and it remains widely used in both ecological in medical meta- research [@crystal-ornelas_meta-analysis_nodate; @zavorka_negative_2018]. There are many ways to calculate the SMD for a dataset, the one we will use here, and the default for the `metafor` package is called Hedge's g. Hedges' g is a useful effect size in ecological meta-analysis becuase it statistically corrects for variance that may be introduced when sample sizes are small [@hedges_distribution_1981].  
+
+Another benefit of using Hedges' g as an effect size is that by having a "standardized" effect we can synthesize data that were measured on a different *scales*. The term scales here depends on your research question and systems. For example, we would likely not want to directly pool the raw data on species richness from many different articles because the articles likely vary in their exact definition of how they quantified species richness (i.e., did authors measure richness of all native tree species or richness of native tree and herbacous plants?). The Hedges' g effect size converts all of these richness measurements to a common unitless scale for each study, so that eventually pooling of the data together in a meta-analytic framework is more appropriate. The Hedges' g calculations in `metafor` also take into account sample size for treatment and control groups as well as measures of variation for both groups.  
+
+Below, we include the code necessary to calculate Hedges' g  for the invasive tree dataset included in this book.  
 
 ```{r}
+require(metafor) # Make sure the metafor package is loaded
 SMD_effect_sizes <-
-  escalc(
+  escalc( # This is the function in metafor that allows us to calculate an effect size for each row in a database
     "SMD",
-    # Specify the effect size we want to calculate
-    m1i = meta_analysis_data$mean_invaded,
-    # provide means for group invaded sites
-    n1i = meta_analysis_data$sample_size_invaded,
+    # Specify the effect size we want to calculate. In this case SMD for Standardized mean difference
+    m1i = mean_invaded,
+    # mean richness at invaded sites
+    n1i = sample_size_invaded,
     # invaded site sample size
-    sd1i = meta_analysis_data$SD_invaded,
+    sd1i = SD_invaded,
     # invaded site SD
-    m2i = meta_analysis_data$mean_control,
-    # control mean
-    n2i = meta_analysis_data$sample_size_control,
-    # control sample size
-    sd2i = meta_analysis_data$SD_control,
-    # control SD
-    data = meta_analysis_data
+    m2i = mean_control,
+    # mean richness at control sites
+    n2i = sample_size_control,
+    # control site sample size
+    sd2i = SD_control,
+    # control site SD
+    data = meta_analysis_data # This is where the escalc function can find all the data for our meta-analysis
   )
 ```
 
-## 
+
+Now, take a look at the last two columns in the new dataframe we've created. One of these `yi` represents the new effect size calculated for each row in the database.  The other column, `vi` is the variance for each effect size.  
+
+```{r}
+datatable(SMD_effect_sizes, fillContainer = TRUE)
+```
+  
+See the `yi` value for the first row. This is a study [@ellis_surface-active_2000] that investigated how arthropod richness changes in different types of vegetation along rivers in New Mexico. They included sites with stands of introduced saltcedar (treatment) and sites without saltcedar (control) and counted up the number of species of arthropods at both sites.  The `yi` in this first row is the calculated value for Hedges' g for this study.  The value of -0.62 indicates that invasive sites had lower species richness than control sites.  We know this because the data assigned to "position #1" in our effect size calculations (see R code above) is all of data that has to do with invaded sites.  If we switch up the code and assign control sites and associated data to "position #1" in our effect size code above, we would expect a +0.62 effect size. The value for `vi` shows the variance calculated for this effect size estimate.  
+
+The next chapters in this book all rely on the values for `yi` and `vi` that we just calculated to generate an overall, single, effect size to summarize findings from the many studies included in this database.  
+
+```{r, echo = FALSE, fig.align="center", out.width="400px", fig.cap="Flowering tamarisk. Photo credit: Teun Spaans, CC BY-SA 3.0"}
+knitr::include_graphics("https://upload.wikimedia.org/wikipedia/commons/4/44/Tamarix_gallica_bloemen.jpg")
+```
+
+## Ratio of Means (aka Response Ratio)
