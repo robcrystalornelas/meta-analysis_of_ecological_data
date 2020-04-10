@@ -1,35 +1,67 @@
 # Fixed effects meta-analysis
 
+## A brief introduction to Fixed effects models in meta-analysis  
+The first type of model that many meta-analysts learn about and use is called a fixed effects model. Fixed effects models have strict assumptions about the population that the samples, and thus effect sizes, in a dataset come from.  Fixed effects models assume that the samples come from the *the same* larger population. So when we think about meta-analyses that aggregate data from multiple very differently designed studies, it's easy to see how ecological meta-analyes may quickly violate the assumptions of a fixed effects model. When the studies in a meta-analysis have different experimental designs, occur in a variety of locations around the globe or have different focal species or taxon, these are all good indications that fixed effects model assumptions will not be met.  
 
-## A brief introduction to Fixed effects models in meta-analysis
-The first type of model that many meta-analysts use is called a fixed effects model.  Fixed effects models have strict assumptions about the broader population that the samples in a dataset come from.
+We note that, fixed effects models are often used in medical meta-analyses due to the highly controlled experimental designs required in medical research. You might be able to envision a medical meta-analyst finding enough studies that test a new drug using very similarly designed Randomized Control Trials, and so the assumtions of a fixed effects model may not be violateas. 
 
-Fixed effects models assume that the samples (the effect sizes in our database) come from *the same underlying population*. We note that, depending on the research question and subject, the definition of *underlying population* may differ. However, ecological meta-research often synthesizes data from a vareity of study designs, focal species, or ecosystems that the requirements for fixed effects models are often too stringent to apply ecological data.  
-
-Nevertheless, fixed effects models provide a useful starting node for our journey through ecological meta-analysis because many of the methods build off the inital fixed-effects framework.
-
+Despite the limitations of fixed effects models, there are some researchers that identify enough studies from the same population for fixed effects modeling [@bai_meta-analysis_2013]. The fixed effects models also provide a useful starting point for our journey through ecological meta-analysis because many of the other methods build off the inital fixed effects framework.  
 
 ## Fixed effects model example
 
-Having previously run the code in earlier chapters, you should have the necesary objects loaded in your R environment.
+Having previously run the R code in earlier chapters, you should have the necesary data called `meta_analysis_data` in your R environment.
 
-Now, let's make sure R libraries are loaded
+Now, let's make sure R libraries we need for the rest of this chapter are loaded  
+
 ```{r}
 require(metafor)
 ```
 
+The `rma` function let's us specify the type of model we'll use to aggregate the many individual effect sizes in our database into a single summary effect size.  Remember from chapter 2, our dataframe now contains two colums with effect size data. One column has the effect size (either SMD or RR) for each row in our database comparing richness at invaded sites to richness at control sites. This is column `yi`. We also have column `vi` which contains the variance for each effect size in our database. Now, we use these two new columns in the `rma` function.  
 
 ```{r}
-# Fixed effects model
-# fixed_effect_model_results <- rma(yi, # outcome
-#                                   vi, # measure of variance
-#                                   method = "FE",
-#                                   data = effect_sizes_richness,
-#                                   slab = paste(lastname, publicationyear, sep = ""))
-# fixed_effect_model_results
+fixed_effect_model_results <- rma(yi, # this is the effect size from each row in database
+                                   vi, # measure of variance from each row in database
+                                   method = "FE", # Specifies fixed effects model
+                                   slab = paste(lastname, publication_year, sep = ""), # This line of code prepares study labes for the forest plot we'll create at the end of the chapter
+                                   data = RR_effect_sizes) # Let R know the dataframe we'll use for our model calulcations
 ```
 
+Because we have not taken the steps to impute missing standard deviations you should see an error above that rows with missing data were removed from the analysis.
 
+Now, let's take a look at the fixed effects model results.  
 
+```{r}
+fixed_effect_model_results
+```
+
+From this model output we can see that after removing NAs from the dataset, we were left with 84 rows of data containing 84 effect sizes (`yi`) and 84 associated measures of variance (`vi`). Looking at the model results section we see a summary effect size of `r round(fixed_effect_model_results$b, 4)`. Remeber, the negative effect size indicates a species richness decrese at sites with invasive species. The p-value of <0.0001 suggest that the summary effect size we found in this meta-analysis are significantly different from a zero effect.  This aligns with the two values provided for lower and upper 95% confidence interval values that do not overlap zero (CI = `r round(fixed_effect_model_results$ci.lb, 4)`, `r round(fixed_effect_model_results$ci.ub, 4)`). Confidence intervals that do not overlap zero are evidence for statistically significant summary effects. Confidence invervals around the summary effect size are shown in the key primary data visualization tool used in meta-analysis, the forest plot.
+
+## Forest plot for fixed effects model
+The forest plot is an essential visualization for every meta-analysis. However, the way that scientists choose to present their forest plot varies person-to-person. In this book, we create all forest plots using the `forest` funtion that is installed as part of the `metafor` package. We have found it to be the most flexible way to build the wide variety of plots that we use throught this book. However we recommend you see what you like best for your data visualizations. For example, the package `metaviz` [@kossmier_metaviz:_2018] creates wonderful forest plots using model output from `metafor` and just a few lines of code.
+
+Here is the code for our first forest plot using the `metafor` package
+
+```{r, fig.height= 12}
+forest(
+  RR_effect_sizes$yi, # These are effect sizes from each row in database
+  RR_effect_sizes$vi, # These are variances from each row in database
+  annotate = FALSE, # Setting this to false prevents R from including CIs for each of the 84 effect sizes in the forest plot. Setting it to TRUE is generally a good practice, but would make this plot cluttered.
+  slab = fixed_effect_model_results$slab, # Along the left hand side, we want eac individual effect size labeled with author names and publication years. We speified this when we calculated the summary effect size above
+  xlab = "ln(Response Ratio)", # Label for x-axis
+  cex = .8, # Text side for study labels
+  pch = 15, # shape of bars in forest plot
+  cex.lab = 1, # Size of x-axis label
+)
+
+# This is code adds in the summary effect size for your meta-analysis
+addpoly(
+  fixed_effect_model_results, # specify the model where your summary effect comes from.
+  col = "orange", # Pich a color that makes the summary effect stand out from the other effect sizes.
+  cex = 1, # size for the text associates with summary effect
+  annotate = TRUE, # Always set this to true. It makes sure effect size and CI for summary effect dize is printed on forest plot
+  mlab = "Summary" # Label for summary effect size
+)
+```
 
 

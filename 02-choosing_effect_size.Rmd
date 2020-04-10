@@ -63,3 +63,24 @@ knitr::include_graphics("https://upload.wikimedia.org/wikipedia/commons/4/44/Tam
 ```
 
 ## Ratio of Means (aka Response Ratio)
+```{r}
+RR_effect_sizes <- escalc( # Function for calculating effect sizes.
+    "ROM",
+    # Specify the effect size we want to calculate. In this case ROM for the Response Ratio or Ratio of Means
+    m1i = mean_invaded,
+    # mean richness at invaded sites
+    n1i = sample_size_invaded,
+    # invaded site sample size
+    sd1i = SD_invaded,
+    # invaded site SD
+    m2i = mean_control,
+    # mean richness at control sites
+    n2i = sample_size_control,
+    # control site sample size
+    sd2i = SD_control,
+    # control site SD
+    data = meta_analysis_data # This is where the escalc function can find all the data for our meta-analysis
+  )
+```
+
+
