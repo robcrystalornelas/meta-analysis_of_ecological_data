@@ -1,6 +1,6 @@
 # Fixed effects meta-analysis
 
-## A brief introduction to Fixed effects models in meta-analysis  
+## A brief introduction to fixed effects models in meta-analysis  
 The first type of model that many meta-analysts learn about and use is called a fixed effects model. Fixed effects models have strict assumptions about the population that the samples, and thus effect sizes, in a dataset come from.  Fixed effects models assume that the samples come from the *the same* larger population. So when we think about meta-analyses that aggregate data from multiple very differently designed studies, it's easy to see how ecological meta-analyes may quickly violate the assumptions of a fixed effects model. When the studies in a meta-analysis have different experimental designs, occur in a variety of locations around the globe or have different focal species or taxon, these are all good indications that fixed effects model assumptions will not be met.  
 
 We note that, fixed effects models are often used in medical meta-analyses due to the highly controlled experimental designs required in medical research. You might be able to envision a medical meta-analyst finding enough studies that test a new drug using very similarly designed Randomized Control Trials, and so the assumtions of a fixed effects model may not be violateas. 

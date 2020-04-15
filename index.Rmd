@@ -97,13 +97,10 @@ gg_publication_year <-
                                 20)
   )
 gg_publication_year
-
 ```
 
 There are many more ways to display and summarize the data included in this CSV file.  Meta-analysis statistics will most often use the numerical variables that are the key ingredients for meta-analysis (mean, standard deviation, and sample size).  Our next chapters will focus on how to use these values to create meta-analytic models.
 
 --- 
 ## Acknowledgements {-}
-This book was created using the **bookdown** [@xie_bookdown_2019]. Thanks to the [Lockwood Lab](https://www.lockwoodlab.com).
-LCO
-NKJ
+This book was created using the **bookdown** [@xie_bookdown_2019]. Thanks to the [Lockwood Lab](https://www.lockwoodlab.com) for motivating RCO to pursue meta-analysis in ecology and also for ping pong games. LCO, NKJ.

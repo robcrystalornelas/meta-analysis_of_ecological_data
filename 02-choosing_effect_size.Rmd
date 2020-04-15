@@ -19,7 +19,7 @@ Now, let's see how we can use these date and the `escalc` function in the `metaf
 
 ## Standardized Mean Difference (aka Hedges' g)  
 
-The Standardized Mean Difference (SMD) was one of the first effect sizes used in published meta-analyses [@hedges_statistical_1985] and it remains widely used in both ecological in medical meta- research [@crystal-ornelas_meta-analysis_nodate; @zavorka_negative_2018]. There are many ways to calculate the SMD for a dataset, the one we will use here, and the default for the `metafor` package is called Hedge's g. Hedges' g is a useful effect size in ecological meta-analysis becuase it statistically corrects for variance that may be introduced when sample sizes are small [@hedges_distribution_1981].  
+The Standardized Mean Difference (SMD) was one of the first effect sizes used in published meta-analyses [@hedges_statistical_1985] and it remains widely used in both ecological meta-research [@crystal-ornelas_meta-analysis_nodate; @zavorka_negative_2018; @doherty_reptile_2020]. There are many ways to calculate the SMD for a dataset, the one we will use here, and the default for the `metafor` package is called Hedge's g. Hedges' g is a useful effect size in ecological meta-analysis becuase it statistically corrects for variance that may be introduced when sample sizes are small [@hedges_distribution_1981].  
 
 Another benefit of using Hedges' g as an effect size is that by having a "standardized" effect we can synthesize data that were measured on a different *scales*. The term scales here depends on your research question and systems. For example, we would likely not want to directly pool the raw data on species richness from many different articles because the articles likely vary in their exact definition of how they quantified species richness (i.e., did authors measure richness of all native tree species or richness of native tree and herbacous plants?). The Hedges' g effect size converts all of these richness measurements to a common unitless scale for each study, so that eventually pooling of the data together in a meta-analytic framework is more appropriate. The Hedges' g calculations in `metafor` also take into account sample size for treatment and control groups as well as measures of variation for both groups.  
 
@@ -62,11 +62,28 @@ The next chapters in this book all rely on the values for `yi` and `vi` that we 
 knitr::include_graphics("https://upload.wikimedia.org/wikipedia/commons/4/44/Tamarix_gallica_bloemen.jpg")
 ```
 
-## Ratio of Means (aka Response Ratio)
+## Response Ratio (aka Ratio of Means)  
+
+The next effect size we'll discuss is called the Response Ratio (RR). It's another frequently used effect size in both ecological and medical meta-analysis [@koricheva_handbook_2013; ]. This effect size is most often used when the effects being compared both have positive signs or both have negative signs. For example, in our invasion impact dataset, but values from the invaded and control sites will have positive signs since richness values (the average number of species at a site or across several sites) can't be negative. 
+
+Using our example data, an effect size is calculated for each paired richness measurements, and it is a ratio of the average richness at invaded sites in one article $\bar{x_i}$ over the average richness of sites without the focal invasive species $\bar{x_c}$. The mathematical representation of the response ratio is relatively straightforward:
+
+<font size="5"> $RR = \frac{\bar{x_i}}{\bar{x_c}}$ </font>  
+
+Because in statistics, fractions can present challenges for creating models based on a normal distribution, meta-analysts typically convert the RR fraction to the natual log of the RR prior to making any statistical calculations.
+
+<font size="5"> $\ln(RR) = ln(\frac{\bar{x_i}}{\bar{x_c}})$ </font>  
+
+As you will see in later calculations, a postive value for $\ln(RR)$ means that the numerator of the response ratio is larger than the denominator, and a negiative value would indicate that the denominator is larger than the numerator. In the context of our example data, a positive $\ln(RR)$ suggest that invasive species increase richness where they are found, and negative $\ln(RR)$ suggests that invasive species decrease richness.  
+
+One benefit of using the Response Ratio is that $\ln(RR)$ can quickly be backtransformed to the $RR$ to provide % increases or decreases in richness with invasive species.
+
+You can find many examples of ecological meta-analyses that use the response ratio as an effect size from a wide variety of disciplines. For example there are meta-analyses using the Response Ratio that investigate how cover crops change biomass on farms [@thapa_biomass_2018], how bee density influences crop production [@rollin_impacts_2019], bat activity in wet vs. dry Australian landscapes [@blakey_importance_2018], and how changes in natural habitat affects reptile abundance [@doherty_reptile_2020].
+
 ```{r}
 RR_effect_sizes <- escalc( # Function for calculating effect sizes.
     "ROM",
-    # Specify the effect size we want to calculate. In this case ROM for the Response Ratio or Ratio of Means
+    # Specify the effect size we want to calculate. In this case ROM for the Ratio of Means or Response Ratio
     m1i = mean_invaded,
     # mean richness at invaded sites
     n1i = sample_size_invaded,
@@ -83,4 +100,7 @@ RR_effect_sizes <- escalc( # Function for calculating effect sizes.
   )
 ```
 
+One limitation to using the $RR$ is that the response ratio cannot be calculated if the either mean effect of the control or treatment group is zero. However, some researchers suggest substituting the 0 value for a very small non-zero value (e.g., 0.1) so that the response ratio can still be used for the meta-analysis [@thapa_cover_2018]. However, another recent meta-analysis opted to use Hedges' g as an effect size precisely becasue some of their data had a mean effect size of 0 [@doherty_reptile_2020].  
+
+Going forward, we illustrate meta-analytic models using the Response Ratio as an effect size for two main reason. First, we did not have richness values of zero in our dataset and so our data could seamlessly work with the response ratio. Second, we wanted to back-transform our $\ln(RR)$ values to provide land managers with an average percent increase or decrease in richness with the presence of invasive speices.
 
