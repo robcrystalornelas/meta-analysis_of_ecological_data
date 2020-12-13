@@ -1,6 +1,8 @@
 # Starting a meta-analysis
 
 ## Systematic search
+This is a minor change
+
 Every meta-analysis begins with a systematic process by which the person conducting the meta-analysis attempts to locate all articles related to the topic they are investigating.  Below, I outline the the general steps of the systematic search process **in bold**, and then provide how one might approach a systematic search to locate the example data we use in this book. One of my favorite figures that shows all of the steps in meta-analysis and systematic review can be found in the first chapter of [@koricheva_handbook_2013]. They stress that much of the effort that goes into meta-analysis happens in the planning and article locating phase. It is essential to outline as much of the meta-analytic process as you can before conducting the analysis--this helps to avoid bias in the articles, analyses, and conclusions we make during the investigation.
 
 ```{r, echo = FALSE, fig.align="center", out.width="350px", fig.cap = "A helpful reminder"}
