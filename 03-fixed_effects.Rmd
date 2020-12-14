@@ -1,15 +1,15 @@
 # Fixed effects meta-analysis
 
 ## A brief introduction to fixed effects models in meta-analysis  
-The first type of model that many meta-analysts learn about and use is called a fixed effects model. Fixed effects models have strict assumptions about the population that the samples, and thus effect sizes, in a dataset come from.  Fixed effects models assume that the samples come from the *the same* larger population. So when we think about meta-analyses that aggregate data from multiple very differently designed studies, it's easy to see how ecological meta-analyes may quickly violate the assumptions of a fixed effects model. When the studies in a meta-analysis have different experimental designs, occur in a variety of locations around the globe or have different focal species or taxon, these are all good indications that fixed effects model assumptions will not be met.  
+The first type of model that many meta-analysts learn about and use is called a fixed effects model. Fixed effects models have strict assumptions about the population that the samples, and thus effect sizes, in a dataset come from.  Fixed effects models assume that the samples come from the *the same* larger population. So when we think about meta-analyses that aggregate data from multiple very differently designed studies, it's easy to see how ecological meta-analyses may quickly violate the assumptions of a fixed effects model. When the studies in a meta-analysis have different experimental designs, occur in a variety of locations around the globe or have different focal species or taxon, these are all good indications that fixed effects model assumptions will not be met.  
 
-We note that, fixed effects models are often used in medical meta-analyses due to the highly controlled experimental designs required in medical research. You might be able to envision a medical meta-analyst finding enough studies that test a new drug using very similarly designed Randomized Control Trials, and so the assumtions of a fixed effects model may not be violateas. 
+We note that, fixed effects models are often used in medical meta-analyses due to the highly controlled experimental designs required in medical research. You might be able to envision a medical meta-analyst finding enough studies that test a new drug using very similarly designed Randomized Control Trials, and so the assumptions of a fixed effects model may not be violates. 
 
-Despite the limitations of fixed effects models, there are some researchers that identify enough studies from the same population for fixed effects modeling [@bai_meta-analysis_2013]. The fixed effects models also provide a useful starting point for our journey through ecological meta-analysis because many of the other methods build off the inital fixed effects framework.  
+Despite the limitations of fixed effects models, there are some researchers that identify enough studies from the same population for fixed effects modeling [@bai_meta-analysis_2013]. The fixed effects models also provide a useful starting point for our journey through ecological meta-analysis because many of the other methods build off the initial fixed effects framework statistically and as implemented programmatically.
 
 ## Fixed effects model example
 
-Having previously run the R code in earlier chapters, you should have the necesary data called `meta_analysis_data` in your R environment.
+Having previously run the R code in earlier chapters, you should have the necessary data called `meta_analysis_data` in your R environment.
 
 Now, let's make sure R libraries we need for the rest of this chapter are loaded  
 
@@ -17,14 +17,14 @@ Now, let's make sure R libraries we need for the rest of this chapter are loaded
 library(metafor)
 ```
 
-The `rma` function let's us specify the type of model we'll use to aggregate the many individual effect sizes in our database into a single summary effect size.  Remember from chapter 2, our dataframe now contains two colums with effect size data. One column has the effect size (either SMD or RR) for each row in our database comparing richness at invaded sites to richness at control sites. This is column `yi`. We also have column `vi` which contains the variance for each effect size in our database. Now, we use these two new columns in the `rma` function.  
+The `rma` function let's us specify the type of model we'll use to aggregate the many individual effect sizes in our database into a single summary effect size.  Remember from chapter 2, our dataframe now contains two columns with effect size data. One column has the effect size (either SMD or RR) for each row in our database comparing richness at invaded sites to richness at control sites. This is column `yi`. We also have column `vi` which contains the variance for each effect size in our database. Now, we use these two new columns in the `rma` function.  We can save the model output as an object called `fixed_effect_model_results`.
 
 ```{r}
 fixed_effect_model_results <- rma(yi, # this is the effect size from each row in database
                                    vi, # measure of variance from each row in database
                                    method = "FE", # Specifies fixed effects model
-                                   slab = paste(lastname, publication_year, sep = ""), # This line of code prepares study labes for the forest plot we'll create at the end of the chapter
-                                   data = RR_effect_sizes) # Let R know the dataframe we'll use for our model calulcations
+                                   slab = paste(lastname, publication_year, sep = ""), # This line of code prepares study labels for the forest plot we'll create at the end of the chapter
+                                   data = RR_effect_sizes) # Let R know the dataframe we'll use for our model calculations
 ```
 
 Because we have not taken the steps to impute missing standard deviations you should see an error above that rows with missing data were removed from the analysis.
