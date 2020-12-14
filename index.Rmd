@@ -103,4 +103,10 @@ There are many more ways to display and summarize the data included in this CSV 
 
 --- 
 ## Acknowledgements {-}
-This book was created using the **bookdown** [@xie_bookdown_2019]. Thanks to the [Lockwood Lab](https://www.lockwoodlab.com) for motivating RCO to pursue meta-analysis in ecology and also for ping pong games. LCO, NKJ.
+This book was created using the **bookdown** [@xie_bookdown_2019]. Thanks to the [Lockwood Lab](https://www.lockwoodlab.com) for motivating RCO to pursue meta-analysis in ecology and also for ping pong games. RCO also thanks LCO for always inspiring.
+
+
+## Recommended Citation {-}
+If you use material from this project to help with your systematic review or meta-analysis, please cite this version of the repository and associated book:
+
+Crystal-Ornelas, R. (2020). robcrystalornelas/meta-analysis_of_ecological_data: First release (Version v0.1.0). Zenodo. http://doi.org/10.5281/zenodo.4320107
