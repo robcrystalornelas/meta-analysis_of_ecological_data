@@ -1,4 +1,4 @@
-[![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/) &nbsp; &nbsp; &nbsp; ![GitHub issues](https://img.shields.io/github/issues-raw/robcrystalornelas/meta-analysis_of_ecological_data) &nbsp; &nbsp; &nbsp;![Twitter URL](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2Frob_c_ornelas) &nbsp; &nbsp; &nbsp; ![GitHub release (latest by date)](https://img.shields.io/github/v/release/robcrystalornelas/meta-analysis_of_ecological_data)
+[![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/) &nbsp; &nbsp; &nbsp; ![GitHub issues](https://img.shields.io/github/issues-raw/robcrystalornelas/meta-analysis_of_ecological_data) &nbsp; &nbsp; &nbsp; ![GitHub release (latest by date)](https://img.shields.io/github/v/release/robcrystalornelas/meta-analysis_of_ecological_data) &nbsp; &nbsp; &nbsp; [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4320107.svg)](https://doi.org/10.5281/zenodo.4320107) &nbsp; &nbsp; &nbsp; ![Twitter URL](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2Frob_c_ornelas) 
 
 # Meta-Analysis of Ecological Data in R
 
@@ -22,3 +22,6 @@ If you'd like to work on a chapter yourself, you can always fork the repository,
 The contents of this repository is licensed with a CCby4.0 license.
 
 ## Recommended citation
+If you use material from this project to help with your systematic review or meta-analysis, please cite this version of the repository and associated book:
+
+Crystal-Ornelas, R. (2020). robcrystalornelas/meta-analysis_of_ecological_data: First release (Version v0.1.0). Zenodo. http://doi.org/10.5281/zenodo.4320107
