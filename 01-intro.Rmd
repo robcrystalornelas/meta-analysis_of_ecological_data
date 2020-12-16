@@ -1,3 +1,8 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
 # Starting a meta-analysis
 
 ## Systematic search
@@ -150,4 +155,50 @@ Note that you can modify any of the boxes to suite the needs of your screening p
 
 
 ## Data extraction
+Extracting data for a meta-analysis is one of the most challenging parts of any of the steps outlined in this book. Planning your data extraction spreadsheet out in advance, and then keeping it organized will eventually pay dividends (in :) not $) as your work becomes more complex. 
+
+In the data extraction phase, you will have already identified the set of candidate articles that match all of the inclusion criteria for your meta-analysis  Now it's time to sift through all of the papers in your database and pull relevant information from each article into your data extraction spreadsheet. To do this, you of course need a data extraction spreadsheet.
+
+**Setting up your data extraction spreadsheet**  
+In my experience, data extraction spreadsheets are typically created in either Microsoft Excel or in Google Sheets.  With Google Sheets, the benefit is that you can easily share and collaborate on this document more seamlessly than in Excel.
+
+Below, you see a typical example of how I setup my data extraction spreadsheet. Just like with establishing search terms ahead of time to minimize injecting your own biases into the articles that are included in the review, it's typical to try to outline as much of the data extraction spreadsheet as possible before actually extracting the data.  In the header row, you see I am collecting some data about each article (e.g., `lastname`, `publicationyear`, `impactfactor`) as well as some data that is specific to the research that is the focus of the article (`invasivespecies` and `latinname`).  I also assigned a unique ID to each article with format of `randomnumber-firstauthor-publicationyear` and I correspondingly re-name each PDF with its assigned unique code. This helps me create a type of relational database where I'm always able to quickly search through my reference manager to find the article in question.  You'll notice that we haven't even gotten to the data needed for a meta-analysis yet, and there is already a decent amount of information we are pulling from each article.
+
+```{r, echo = FALSE, fig.align="center", out.width="250%", fig.cap = "Example of a data extraction spreadsheet"}
+knitr::include_graphics("images/data_extraction_spreadsheet.png")
+```
+The data extraction spreadsheet shown above has a total of 43 columns each characterizing a different element or piece of data from the manuscript. Without delving too much into what all of those columns are, you may, especially for ecological meta-analyses, be interested in whether other variables may moderate the main effect you are investigating. For example, we could collect data on variables like:  
+
+- ecological impact of invasive species  
+- country where impact occurred  
+- tropic position  
+- sampling frequency
+- study length (in days)
+
+The list goes on, but these are a few examples of variables that, while not the main focus of our meta-analysis, can be incorproated into models to try and account for some of the variation we see in the data.
+
+Now it's time to extract the data that you need for a meta-analysis. I am focusing on some common metrics to extract (mean, standard deviation [SD], and sample size[N]), but there are many others which I will not address here (e.g., pearson's r).  The data we extract here, will be useful for calculating two commonly used meta-analytic effect sizes in Ecology, Headge's g and the response ration.
+
+So in order to collect these data, we create separate columns for the mean, SD, and N as you can see below. You can certainly deviate from the naming conventions in the image below, but make sure they are descriptive enough so that you know which data are from your control sites and which are from your treatment (or experimental) sites.
+
+```{r, echo = FALSE, fig.align="center", out.width="250%", fig.cap = "Example of a data extraction spreadsheet"}
+knitr::include_graphics("images/mean_sd_n_extraction.png")
+```
+
+Best case scenario is that when you go into extract data from an article you find mean
+
+** What happens if I can't find the data within an article?
+1. Download supplemental information. This includes repository
+2. Extract data from figure
+3. Contact author
+
+
+
 *Applying this to our example data*  
+
+
+
+
+
+
+

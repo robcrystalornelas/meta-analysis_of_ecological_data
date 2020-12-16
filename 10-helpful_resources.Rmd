@@ -1,0 +1,20 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+# Helpful resources
+
+There are many other websites, books and resources that exist to help facilitate meta-analysis. We outline some of those here. As always, please reach out to us via our GitHub issues page to suggest more resources to circulate to the community.
+
+---
+
+### References managers  
+Reference managers help you organize the many PDFs you will surely have to read through when conducting a meta-analysis. They are programs or sometimes websites where you upload your PDFs, and then create subfolders to help organize all those PDFs.  I tend to do a lot of my screening steps within my reference manager. For example
+
+```{r, figures-side, fig.show="hold", out.width="25%"}
+par(mar = c(4, 4, .1, .1))
+knitr::include_graphics("https://www.zotero.org/support/_media/logo/zotero_256x256x32.png")
+knitr::include_graphics("https://www.startupjobs.cz/uploads/eeb5c4fe2d9a0a7122141871f3d823bc.png")
+
+```
