@@ -1,0 +1,89 @@
+unique_article_identifier,lastname,publication_year,invasive_species_common_name,invasive_species_latin_name,invasive_species_taxonomic_group,invasive_species_trophic_position,island_or_continent,study_design,SCImago_journal_rank,time_since_invasion,country,mean_control,SD_control,sample_size_control,mean_invaded,SD_invaded,sample_size_invaded
+36026-Ellis-2000,Ellis,2000,saltcedar,Tamarix ramosissima,tree,producer,continent,CI,0.248,93,usa,65.5,0.707,2,60,7.07,2
+22735-Bailey-2001,Bailey,2001,saltcedar,Tamarix ramosissima,tree,producer,continent,CI,0.961,NA,usa,6,0.174,10,3.4,0.256,10
+22688-Holmes-2002,Holmes,2002,coojong,Acacia saligna,tree,producer,continent,CI,1.03,NA,south africa,5.09,0.63,4,3.07,1.47,4
+22607-Frappier-2003,Frappier,2003,glossy buckthorn,Rhamnus frangula,tree,producer,continent,CI,0.198,86,usa,5.28,2.98,6,3.43,4.73,6
+22607-Frappier-2003,Frappier,2003,glossy buckthorn,Rhamnus frangula,tree,producer,continent,CI,0.198,86,usa,3.34,2.21,6,1.87,2.34,6
+32587-Marchante-2003,Marchante,2003,Acacia longifolia,Acacia longifolia,tree,producer,continent,CI,NA,99,portugal,10.49,0.84,3,8.97,1.72,3
+34828-Greenwood-2004,Greenwood,2004,white crack willow,Salix rubens,tree,producer,continent,CI,1.487,NA,australia,4.6,3.19757721,5,0.29,0.3354102,5
+22524-Harris-2004,Harris,2004,furze,Ulex europaeus,tree,producer,island,CI,0.356,NA,new zealand,126.85,63.85,2,234.7,18.38,2
+27553-Wearne-2004,Wearne,2004,common broom,Cytisus scoparius,tree,producer,continent,space-for-time,1.491,21,australia,4.59,4,6,8.2,1.46,6
+22286-Catling-2005,Catling,2005,scots pine,Pinus sylvestris,tree,producer,continent,CI,0.266,NA,canada,12.5,4.95,2,7,1.41,2
+22286-Catling-2005,Catling,2005,scots pine,Pinus sylvestris,tree,producer,continent,CI,0.266,NA,canada,0.5,0.71,2,1,0,2
+34751-Hejda-2006,Hejda,2006,himalayan balsam,Impatiens glandulifera,tree,producer,continent,CI,2.095,111,czech republic,9.2,3.1,10,9,2.8,10
+30989-Jager-2007,Jager,2007,quinine,Cinchona pubescens,tree,producer,island,CI,2.421,58,galapagos islands,9.45,1.8794148,42,6.38,1.8794148,42
+30989-Jager-2007,Jager,2007,quinine,Cinchona pubescens,tree,producer,island,CI,2.421,58,galapagos islands,6.98,1.8794148,42,5.14,1.8794148,42
+21716-Lopezaraiza-Mikel-2007,Lopezaraiza-Mikel,2007,himalayan balsam,Impatiens glandulifera,tree,producer,island,CI,7.969,164,uk,61.16,13.54,4,39.54,13.1,4
+31713-Mason-2007,Mason,2007,bitou bush,Chrysanthemoides monilifera,tree,producer,continent,CI,2.421,20,australia,4.16,1.07331263,5,1.17,0.84970583,5
+38258-Porazinska-2007,Porazinski,2007,broad-leaved paperbark,Melaleuca quinquenervia,tree,producer,continent,CI,0.518,206,usa,23.82,8.83,6,19.9,7.72,6
+35553-Sullivan-2007,Sullivan,2007,furze,Ulex europaeus,tree,producer,island,space-for-time,0.724,NA,new zealand,17.3,1.96,6,12.7,4.165,6
+35553-Sullivan-2007,Sullivan,2007,furze,Ulex europaeus,tree,producer,island,space-for-time,0.724,NA,new zealand,1,0.98,6,1.7,0.98,6
+21880-Wilcox-2007,Wilcox,2007,chinese privet,Ligustrum sinense,tree,producer,continent,CI,0.297,154,usa,2.62,1.31928011,5,4.83,1.27455875,5
+38084-Hartman-2008,Hartman,2008,amur honeysuckle,Lonicera maackii,tree,producer,continent,CI + space-for-time,0.558,102,usa,14.5,2.5,4,8.5,4.78046023,12
+38084-Hartman-2008,Hartman,2008,amur honeysuckle,Lonicera maackii,tree,producer,continent,CI + space-for-time,0.558,102,usa,19,3.74,4,18.16,3.4294606,12
+38084-Hartman-2008,Hartman,2008,amur honeysuckle,Lonicera maackii,tree,producer,continent,CI + space-for-time,0.558,102,usa,11,3.14,4,7.16,3.49874263,12
+38084-Hartman-2008,Hartman,2008,amur honeysuckle,Lonicera maackii,tree,producer,continent,CI + space-for-time,0.558,102,usa,8.75,2.36,4,3.66,3.56802466,12
+38084-Hartman-2008,Hartman,2008,amur honeysuckle,Lonicera maackii,tree,producer,continent,CI + space-for-time,0.558,102,usa,28.5,6.1,4,32.5,9.52627944,12
+30731-Mason-2008,Mason,2008,bitou bush,Chrysanthemoides monilifera,tree,producer,continent,CI,2.426,NA,australia,6.21,2.30893915,17,3.1,2.08,16
+30731-Mason-2008,Mason,2008,bitou bush,Chrysanthemoides monilifera,tree,producer,continent,CI,2.426,NA,australia,7.4,3.50463978,17,1.95,1.6,16
+30731-Mason-2008,Mason,2008,bitou bush,Chrysanthemoides monilifera,tree,producer,continent,CI,2.426,NA,australia,3.85,1.73170436,17,0.87,0.92,16
+30731-Mason-2008,Mason,2008,bitou bush,Chrysanthemoides monilifera,tree,producer,continent,CI,2.426,NA,australia,11.54,8.06380803,10,5.97,4.67653718,12
+34679-Piqueray-2008,Piqueray,2008,rockspray cotoneaster,Cotoneaster horizontalis,tree,producer,continent,CI,0.198,25,belgium,11.93,1.81,15,8.2,2.27,15
+36547-Hanula-2009,Hanula,2009,chinese privet,Ligustrum sinense,tree,producer,continent,CI,0.254,NA,usa,24,4.58993464,3,16.3,7.04,4
+20756-Jager-2009,Jager,2009,quinine,Cinchona pubescens,tree,producer,island,BA,3.721,65,galapagos islands,17.4,2.44,14,17.8,2.52,14
+20756-Jager-2009,Jager,2009,quinine,Cinchona pubescens,tree,producer,island,BA,3.721,65,galapagos islands,2.79,0.8,14,3,0.7,14
+20756-Jager-2009,Jager,2009,quinine,Cinchona pubescens,tree,producer,island,BA,3.721,65,galapagos islands,23,3.1,14,23,3.1,14
+21036-Moseman-2009,Moseman,2009,grey mangrove,Avicennia marina,tree,producer,continent,CI,1.882,0,usa,8.035,0.5,2,8.34,0.22,2
+21036-Moseman-2009,Moseman,2009,tamarisk,Avicennia marina,tree,producer,continent,CI,1.882,0,usa,9.84,5.51543289,8,6.58,2.43244733,8
+20586-Demopoulos-2010,Demopoulos,2010,american mangrove,Rhizophora mangle,tree,producer,island,CI,1.782,NA,hawaii,11,2.94448637,3,8.79,3.29089653,3
+20522-Shaben-2010,Shaben,2010,common broom,Cytisus scoparius,tree,producer,continent,CI,1.146,NA,canada,11.66,0.34,2,11.81,1.03,2
+35505-Young-2010,Young,2010,coconut palm,Cocos nucifera,tree,producer,island,CI,1.788,NA,,1.5,0.76,26,1.58,0.69,33
+36828-Odat-2011,Odat,2011,coojong,Acacia saligna,tree,producer,continent,CI,0.381,NA,jordan,11.08,1.26439709,3,7.79,0.83138439,3
+34402-Rascher-2011,Rascher,2011,Acacia longifolia,Acacia longifolia,tree,producer,continent,CI,1.674,NA,portugal,4.2,2.01,4,3.24,0.88,4
+19558-Watling-2011,Watling,2011,amur honeysuckle,Lonicera maackii,tree,producer,continent,CI,2.832,NA,usa,6,1.1,6,4.3,1.2,6
+18901-Arthur-2012,Arthur,2012,amur honeysuckle,Lonicera maackii,tree,producer,continent,CI,0.992,NA,usa,28.75,0.5,10,28.25,1.68,5
+18825-Benesperi-2012,Benesperi,2012,black locust,Robinia pseudoacacia,tree,producer,continent,CI,1.205,NA,italy,21.5,16.93,7,14.57,11.39,21
+19207-Gonzalez-Munoz-2012,Gonzalez-Munoz,2012,silver wattle,Acacia dealbata,tree,producer,continent,CI,1.826,159,spain,11.43,6.21,3,6.75,1.52,3
+19335-Greene-2012,Greene,2012,chinese privet,Ligustrum sinense,tree,producer,continent,CI,1.532,157,usa,11.19,1.93,3,5.4,2.7,3
+29925-Lorenzo-2012,Lorenzo,2012,silver wattle,Acacia dealbata,tree,producer,continent,CI,0.612,NA,spain,3.46,0.8,11,2.11,0.53,11
+19000-McNeish-2012,McNeish,2012,amur honeysuckle,Lonicera maackii,tree,producer,continent,CI,1.532,114,usa,8,1,3,7,1,3
+19243-Nascimbene-2012,Nascimbene,2012,black locust,Robinia pseudoacacia,tree,producer,continent,CI,1.749,NA,italy,15.35,12.8,2,9.37,1.85,6
+18064-Bosu-2013,Bosu,2013,paper mulberry,Broussonetia papyrifera,tree,producer,continent,BACI,0.44,48,ghana,4.82,NA,12,5,NA,12
+18627-Cuneo-2013,Cuneo,2013,common olive,Olea europaea,tree,producer,continent,CI,1.023,158,australia,7.11,0.025,4,1.57,3.02,4
+18627-Cuneo-2013,Cuneo,2013,common olive,Olea europaea,tree,producer,continent,CI,1.023,158,australia,11.86,1.79,4,5.12,4.73,4
+18105-MacGregor-Fors-2013,MacGregor-Fors,2013,saltcedar,tamarix ramosissima,tree,producer,continent,CI,0.297,211,mexico,8.4,1.6,11,8.4,1.4,8
+18759-Serra-2013,Serra,2013,crack willow,Salix fragilis,tree,producer,continent,CI,0.953,NA,argentina,2.83,1.67,3,2.22,0.48,3
+18759-Serra-2013,Serra,2013,crack willow,Salix fragilis,tree,producer,continent,CI,0.953,NA,argentina,13.44,1.26,3,12.21,3,3
+18418-Tererai-2013,Tereai,2013,murray red gum,Eucalyptus camaldulensis,tree,producer,continent,CI,1.78,110,south africa,7.42,3.12,30,4.16,3.25,25
+17373-Cano-2014,Cano,2014,salt bush,Baccharis halimifolia,tree,producer,continent,CI,1.435,NA,spain,6.84,1.51,4,3.39,0.375,2
+17555-Flinn-2014,Flinn,2014,japanese barberry,Berberis thunbergii,tree,producer,continent,CI,0.335,NA,usa,4.57,0.24,50,4.36,0.17,50
+17531-Hudson-2014,Hudson,2014,chinese privet,Ligustrum sinense,tree,producer,continent,CI,1.521,159,usa,32.69,3.54,4,16.75,7.32,4
+17531-Hudson-2014,Hudson,2014,chinese privet,Ligustrum sinense,tree,producer,continent,CI,1.521,159,usa,8.93,2.64,4,11.37,4.46,4
+34194-Kumar-2014,Kumar,2014,mesquite,Prosopis juliflora,tree,producer,continent,CI,0.433,NA,india,10.6,NA,3,13.3,NA,3
+34194-Kumar-2014,Kumar,2014,mesquite,Prosopis juliflora,tree,producer,continent,CI,0.433,NA,india,11,NA,3,10.8,NA,1
+17346-Lazzaro-2014,Lazzaro,2014,silver wattle,Acacia dealbata,tree,producer,island,space-for-time,1.635,63,italy,7.04,1.32,9,3.33,0.69,9
+17857-Loomis-2014,Loomis,2014,amur honeysuckle,Lonicera maackii,tree,producer,continent,CI,0.488,112,usa,2.5,0.76,10,2.4,1.04,10
+17857-Loomis-2014,Loomis,2014,amur honeysuckle,Lonicera maackii,tree,producer,continent,CI,0.488,112,usa,1.91,0.53,10,1.8,0.38,10
+17986-Loomis-2014,Loomis,2014,amur honeysuckle,Lonicera maackii,tree,producer,continent,CI,1.435,112,usa,23.87,5.50236313,10,35.89,6.4826692,10
+17986-Loomis-2014,Loomis,2014,amur honeysuckle,Lonicera maackii,tree,producer,continent,CI,1.435,112,usa,3.16,1.4862705,10,6.96,1.99223493,10
+17986-Loomis-2014,Loomis,2014,amur honeysuckle,Lonicera maackii,tree,producer,continent,CI,1.435,112,usa,3.95,1.51789328,10,5.22,1.96061215,10
+17986-Loomis-2014,Loomis,2014,amur honeysuckle,Lonicera maackii,tree,producer,continent,CI,1.435,112,usa,5.22,1.99223493,10,6.79,3.03578655,10
+17986-Loomis-2014,Loomis,2014,amur honeysuckle,Lonicera maackii,tree,producer,continent,CI,1.435,112,usa,6.96,1.99223493,10,9.49,2.972541,10
+17986-Loomis-2014,Loomis,2014,amur honeysuckle,Lonicera maackii,tree,producer,continent,CI,1.435,112,usa,2.21,1.4862705,10,3,1.01192885,10
+17910-Rusterholz-2014,Rusterholz,2014,himalayan balsam,Impatiens glandulifera,tree,producer,continent,BA,0.824,NA,switzerland,24.1,12.01,15,27.6,13.17,15
+26394-Saure-2014,Saure,2014,sitka spruce,Picea sitchensis,tree,producer,continent,CI,1.435,NA,norway,6.7,0.32,4,6.9,0.28,4
+26394-Saure-2014,Saure,2014,sitka spruce,Picea sitchensis,tree,producer,continent,CI,1.435,NA,norway,4.4,0.34,4,4,0.2,4
+17756-Vernon-2014,Vernon,2014,european buckthorn,Rhamnus cathartica,tree,producer,continent,CI,0.405,211,usa,5.06,2.1,18,5.63,2.13,16
+18048-Woziwoda-2014,Woziwoda,2014,northern red oak,Quercus rubra,tree,producer,continent,CI,0.296,412,poland,14.72,NA,18,7.03,NA,65
+16505-Buchholz-2015,Bucholz,2015,black locust,Robinia pseudoacacia,tree,producer,continent,CI,1.427,NA,germany,9,6.32,10,9,3.16,10
+16505-Buchholz-2015,Bucholz,2015,black locust,Robinia pseudoacacia,tree,producer,continent,CI,1.427,NA,germany,21,9.48,10,19,6.32,10
+16888-Constan-Nava-2015,Costan-Nava,2015,tree of heaven,Ailanthus altissima,tree,producer,continent,CI,1.462,309,spain,25.1,5.93,10,14.8,6.96,10
+16386-Elleriis-2015,Elleriis,2015,beach rose,Rosa Rugosa,tree,producer,continent,CI,1.462,63,denmark,29.35,5.62,20,24.9,5.18,20
+16517-Konlechner-2015,Konlechner,2015,tree lupine,Lupinus arboreus,tree,producer,island,CI,0.982,113,new zealand,1.76,0.49,3,2.16,0.34,3
+34034-Lazzaro-2015,Lazzaro,2015,golden wattle,Acacia pycnantha,tree,producer,island,CI,0.575,13,italy,9.67,1.53,3,25.67,3.06,3
+16356-Watts-2015,Watts,2015,grey willow,Salix cinerea,tree,producer,island,BACI,0.76,164,new zealand,23.87,2.69,6,10.52,2.52,6
+15882-Collette-2016,Collette,2016,russian olive,Elaeagnus angustifolia,tree,producer,continent,CI,0.528,NA,canada,6.34,3.23,12,9.02,1.76,6
+16052-Mello-2016,Mello,2016,white popinac,Leucaena leucocephala,tree,producer,continent,CI,1.201,72,brazil,4.4,1.78,10,1.2,0.42,10
+15859-Nguyen-2016,Nguyen,2016,common olive,Olea europaea,tree,producer,continent,space-for-time,1.294,NA,australia,34.3,3.29,3,25.8,2.08,3
+33578-Reif-2016,Reif,2016,black locust,Robinia pseudoacacia,tree,producer,continent,CI,2.322,NA,czech republic,11.1,3.1,20,11.8,2.7,19
+33886-Schreuder-2016,Schreuder,2016,monterey pine,Pinus radiata,tree,producer,continent,CI,1.72,NA,south africa,6.5,0.71,2,3,1.41,2
