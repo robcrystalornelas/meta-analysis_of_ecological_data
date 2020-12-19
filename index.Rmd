@@ -10,7 +10,7 @@ bibliography: [ma_ecology_book.bib]
 biblio-style: apalike
 link-citations: yes
 github-repo: robcrystalornelas/meta-analysis_of_ecological_data
-description: "This is a book about how to use R for the meta-analysis of ecological data"
+description: "A book about how to use R for the meta-analysis of ecological data"
 delete_merged_file: true
 ---
 
@@ -25,16 +25,17 @@ knitr::include_graphics("https://drive.google.com/uc?id=1NvwA1n1n8yO--FGwaq5P613
 
 We created this book as a guide to conducting meta-analysis using ecological data in R.  Ecologists are increasingly turning to evidence synthesis (i.e., systematic review and meta-analysis) as a way of describing and summarizing the published evidence base within sub-disciplines.  There are helpful books that provide the theory behind meta-research in ecology [@koricheva_handbook_2013]. There are also more technical guides that provide the R code for conducting meta-analyses, but these are typically built around datasets and methodology in medical [@schwarzer_meta-analysis_2015] or social sciences [@harrer_doing_2019]. We are excited to provide a guide for those conducting a meta-analysis in R using ecological data.  We present methods that we have used in our own research, and of course indicate where we have built upon the work of other meta-researchers regardless of their primary field of investigation.
 
-## Intro to the data {-}
+## Intro to the data {-}  
 
 The data we use in this book come from a meta-analysis by one of the co-authors (RCO) and his PhD advisor Dr. Julie Lockwood [@crystal-ornelas_cumulative_2020]. The data are the result of a systematic search for articles that investigate how invasive species native species richness. Language is particularly important to the field of invasion ecology [@mattingly_disconnects_2020], and so we start by describing what we mean when we say **invasive species**. The dataset contains information from ??Articles on ?? species of invasive trees. These trees have been intentionally or unintentionally moved to a new location from their native location.  The invasive trees have established local populations, spread from this location and are now affecting their surrounding ecosystems in the new sites.
 
 For more information about invasive species, we provide couple of references  the authors find helpful.
 
 - *Invasion Ecology* [@lockwood_invasion_2013]
-- *Encyclopedia of Biological Invasions* [@simberloff_encyclopedia_2011]
+- *Encyclopedia of Biological Invasions* [@simberloff_encyclopedia_2011]  
 
-### The data {-}
+
+### The data {-}  
 Here, we import the data from google drive, and we can see from the output the classes of data (i.e., character or double) that R thinks our .csv file contains.
 ```{r}
 require(tidyverse)
@@ -101,17 +102,14 @@ gg_publication_year
 
 There are many more ways to display and summarize the data included in this CSV file.  Meta-analysis statistics will most often use the numerical variables that are the key ingredients for meta-analysis (mean, standard deviation, and sample size).  Our next chapters will focus on how to use these values to create meta-analytic models.
 
-
----
-
-## Contact information {-}
+## Contact information {-}  
 This project is a work in progress and I'm always open to chatting with collaborators or hearing your suggestions for potential topics to include.  There are a couple of ways to reach out:
 
 - Visit the associated [GitHub page for this project](https://github.com/robcrystalornelas/meta-analysis_of_ecological_data), follow the repository and [submit an issue](https://github.com/robcrystalornelas/meta-analysis_of_ecological_data/issues/new/choose) with your suggestion.
 - Send me a message on [twitter](https://twitter.com/rob_c_ornelas)  
 - Visit [my website](https://robcrystalornelas.org/) for other up-to-date contact information.
 
---- 
+
 ## Acknowledgements {-}
 This book was created using the **bookdown** [@xie_bookdown_2019]. Thanks to the [Lockwood Lab](https://www.lockwoodlab.com) for motivating RCO to pursue meta-analysis in ecology and also for ping pong games. RCO also thanks LCO for always inspiring.
 
