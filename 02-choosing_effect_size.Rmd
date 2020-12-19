@@ -15,7 +15,7 @@ require(DT) #This package allows for scrollable tables in R Markdown
 datatable(meta_analysis_data, fillContainer = TRUE)
 ```
 
-Now, let's see how we can use these date and the `escalc` function in the `metafor` package to calculate measurement-level effect sizes.  
+Now, let's see how we can use these data and the `escalc` function in the `metafor` package to calculate measurement-level effect sizes.  
 
 ## Standardized Mean Difference (aka Hedges' g)  
 

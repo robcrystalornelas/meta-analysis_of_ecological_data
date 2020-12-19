@@ -39,8 +39,7 @@ Here, we import the data from google drive, and we can see from the output the c
 ```{r}
 require(tidyverse)
 require(cowplot)
-url_for_data <- "https://drive.google.com/uc?id=1eL9f8pirn8TBhyuOs39Lfcpd3TYruvDG"
-meta_analysis_data <- read_csv(url_for_data)
+meta_analysis_data <- read_csv("MaEDR_data.csv")
 ```
 
 Next, let's inspect the data a bit, before we dive into the meta-analysis.  As you can see from the code above, and the CSV file if you open it up, there are 17 different variables, or columns, in our newly imported dataframe. Some of the varaibles are the categorical pieces of data that we extracted from the articles that describe the article itself or the study's focial invasive species.
