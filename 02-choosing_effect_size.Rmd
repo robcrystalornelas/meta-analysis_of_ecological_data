@@ -74,7 +74,7 @@ Because in statistics, fractions can present challenges for creating models base
 
 <font size="5"> $\ln(RR) = ln(\frac{\bar{x_i}}{\bar{x_c}})$ </font>  
 
-As you will see in later calculations, a postive value for $\ln(RR)$ means that the numerator of the response ratio is larger than the denominator, and a negiative value would indicate that the denominator is larger than the numerator. In the context of our example data, a positive $\ln(RR)$ suggest that invasive species increase richness where they are found, and negative $\ln(RR)$ suggests that invasive species decrease richness.  
+As you will see in later calculations, a positive value for $\ln(RR)$ means that the numerator of the response ratio is larger than the denominator, and a negative value would indicate that the denominator is larger than the numerator. In the context of our example data, a positive $\ln(RR)$ suggest that invasive species increase richness where they are found, and negative $\ln(RR)$ suggests that invasive species decrease richness.  
 
 One benefit of using the Response Ratio is that $\ln(RR)$ can quickly be backtransformed to the $RR$ to provide % increases or decreases in richness with invasive species.
 
@@ -100,7 +100,7 @@ RR_effect_sizes <- escalc( # Function for calculating effect sizes.
   )
 ```
 
-One limitation to using the $RR$ is that the response ratio cannot be calculated if the either mean effect of the control or treatment group is zero. However, some researchers suggest substituting the 0 value for a very small non-zero value (e.g., 0.1) so that the response ratio can still be used for the meta-analysis [@thapa_cover_2018]. However, another recent meta-analysis opted to use Hedges' g as an effect size precisely becasue some of their data had a mean effect size of 0 [@doherty_reptile_2020].  
+One limitation to using the $RR$ is that the response ratio cannot be calculated if the either mean effect of the control or treatment group is zero. However, some researchers suggest substituting the 0 value for a very small non-zero value (e.g., 0.1) so that the response ratio can still be used for the meta-analysis [@thapa_cover_2018]. However, another recent meta-analysis opted to use Hedges' g as an effect size precisely because some of their data had a mean effect size of 0 [@doherty_reptile_2020].  
 
-Going forward, we illustrate meta-analytic models using the Response Ratio as an effect size for two main reason. First, we did not have richness values of zero in our dataset and so our data could seamlessly work with the response ratio. Second, we wanted to back-transform our $\ln(RR)$ values to provide land managers with an average percent increase or decrease in richness with the presence of invasive speices.
+Going forward, we illustrate meta-analytic models using the Response Ratio as an effect size for two main reason. First, we did not have richness values of zero in our dataset and so our data could seamlessly work with the response ratio. Second, we wanted to back-transform our $\ln(RR)$ values to provide land managers with an average percent increase or decrease in richness with the presence of invasive species.
 

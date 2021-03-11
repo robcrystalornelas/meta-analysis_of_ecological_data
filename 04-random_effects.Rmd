@@ -3,25 +3,22 @@
 ## A brief introduction to random effects models in meta-analysis  
 While fixed effects models are often thought of as the building blocks to meta-analysis, their strict assumptions (e.g., that all effect sizes come from the same underlying population) make them somewhat unrealistic starting points for ecological meta-analyses. As [@koricheva_handbook_2013] point out, we tend to use random effects models in ecological meta-analysis because even though the main effect we are investigating might be consistent across studies (e.g., changes in species richness) we want to also account for variation that comes from the individual studies that comprise our meta-analysis.
 
-
-Unlike clinical trial data that are common in medical research and take place under highly controlled experimental contexts, ecological meta-research is less consistent in experimental design and so we tend to use random-effect models because of their more relaxed assumptions.  
-
 Random effects models account for the variation we get both **within** a study as well as **between** the many different studies in our meta-analysis.
 
 Examples of random effects models in meta-analysis are plentiful, and researchers often begin with a random effects model, then progress onto more complex models that incorporate other variables from the data they've extracted.  A study by [@Murphy2014-nt] used a random effects model and aggregated over 300 effect sizes to find that in habitats with human disturbance, there was an average 18% decrease in species richness. In another meta-analysis, more focused on invasive species impacts, [@Cameron2016-yj] brought together 112 articles and found that decomposition of leaf litter increased by 41% when invasive invertebrates were present in study sites. 
 
 ## Random effects model example  
-Just like in the previous chapter, we'll use the example dataset for this book to walk through the steps involved in running and interpreting a random effects model in R. Then, we'll plot the results in a forest plot.  
+Just like in the previous chapter, we'll use the example dataset for this book to walk through the steps involved in running and interpreting a random effects model in R. Then, we'll plot the results in a forest plot.
 
-First, we'll load in the `metafor` library which we'll use to run our models.
+First, we'll load in the `metafor` package which we'll use to run our models.
 
 ```{r}
 library(metafor)
 ```
 
-Next, be sure you have the dataframe `RR_effect_sizes` in your R environment. You can always re-run the R code that is in chapters 1 and 2 of this book.
+Next, be sure you have the dataframe `RR_effect_sizes` in your R environment (look for it in the `environment` tab of the top right panel if you are using Rstudio). You can always re-run the R code that is in chapters 1 and 2 of this book if the dataframe isn't there.
 
-The code below should look vaguely familiar from the last chapter on fixed-effects meta-analyses. That's because we're using the same function from the `metafor` package called `rma`.  Since we've already calculated an effect size for every pair of measurements in our database (i.e., invaded AND uninvaded richness) we'll use those in our modeling below. The column representing effect sizes is called `yi` in our dataframe, and each effect size has its own variance measure under the column `vi`.
+The code below should look vaguely familiar from the last chapter on fixed-effects meta-analyses. That's because we're using the same function from `metafor` package called `rma`.  Since we've already calculated an effect size for every pair of measurements in our database (i.e., invaded AND uninvaded richness) we'll it in our modeling below. The column representing effect sizes is called `yi` in our dataframe, and each effect size has its own variance measure under the column `vi`.
 
 ```{r}
 random_effect_model_results <- rma(yi, # this is the effect size from each row in database
@@ -43,12 +40,12 @@ Initially, you'll notice we get a few new metrics in this output when compared t
 
 In order to see how the random effects model works a bit more clearly, we'll use another function in the `metafor` package called `rma.mv`. The results from the `rma` function and this `rma.mv` will be the same. The difference is that when using `rma.mv` we have to indicate that we would like the model to account for random effects at the "effect size" level of our database.  
 
-This first line of code creates a new column in the `RR_effect_sizes` that just numbers every row in our database.  
+This first line of code creates a new column in the `RR_effect_sizes` that assigns a unique number to every **row** in our database.  
 ```{r}
 RR_effect_sizes$ID <- seq.int(nrow(RR_effect_sizes))
 ```
 
-Now, here's the syntax for the `rma.mv` function. First, we specify the effect size column `yi` and the variance `vi`. Then we assign the random effect to every row in database, fortunately, we just created the `ID` variable which makes this easy using the syntax `random = ~1 | ID`. And lastly, we have to tell the function to pull all of these variables or columns from the dataframe `RR_effect_sizes`.  
+Now, here's the syntax for the `rma.mv` function. First, we specify the effect size column `yi` and the variance `vi`. Then we assign the random effect to every row in the database. Fortunately, we just created the `ID` variable which makes this easy using the syntax `random = ~ 1 | ID`. And lastly, we have to tell the function to pull all of these variables or columns from the dataframe `RR_effect_sizes`.  
 
 ```{r}
 random_effect_model_results_again <- rma.mv(yi, vi, random = ~ 1 | ID, data = RR_effect_sizes)
@@ -57,6 +54,27 @@ random_effect_model_results_again
 
 When we print the results from the `rma.mv` function, we get the exact same results for the summary effect, p-value and confidence interval that we got from the `rma` function.
 
-## Coming soon, explanation of tau-squared and Heterogeneity tests.
+## Accounting for nonindependence  
+However, because we don't want the random effect model to assume that the random sources of variation are only coming from difference between the "trials" or the different rows in our database, we can instead assign the random effect to the `lastname` variable to account for the possibility that effect sizes are not completely independent [@Cameron2016-yj]. We do this because it is possible (and actually quite common) for meta-analysts to extract multiple effect sizes from the same article (i.e., the same article reports richness impacts of Zebra mussels and Quagga mussels separately).
+
+
+```{r}
+random_effects_model_results_with_author <-
+  rma.mv(yi, 
+         vi, 
+         random = ~ 1 | lastname, 
+         data = RR_effect_sizes)
+random_effects_model_results_with_author
+```
+
+Looking at the results from our updated random effects meta-analysis that controls for nonindependence, we see just slight shifts in these results. This is likely due to the relatively large sample size of our starting dataset. We now have an overall effect size of `r round(random_effects_model_results_with_author$b, 4)`, still suggesting a moderate decrease in richness when invasive species are present. We know this effect is significant because the p value is < 0.0001 and because the confidence interval does not overlap zero (CI = `r round(random_effect_model_results_with_author$ci.lb, 4)`, `r round(random_effect_model_results_with_author$ci.ub, 4)`.
+
+
+
+## Test for heterogenity in your data
+Cochran's Q is a commonly used test for heterogeneity, and conveniently it's part of the output from `metafor`'s random effect function. This statistic gives us the difference between each of the observed effect sizes in our dataset (so these are the `yi`'s and the effect size for a fixed effects model. While there's a bit more detail to how we arrive at the Q statistic, ultimately those differences between the overall fixed effect size and each of our `yi`'s are squared so they won't be negative and added up.  One issue with Q statistic is that it always gets a higher magnitude when our sample size goes up.
+
+Another point to consider is that heterogeneity test (in addition to the Q test there is the I^2 and tau-squared tests) they may be somewhat irrelevant since, by using a random effects model and acknowledging heterogeneity in our dataset by *a priori* choosing to use a random effects model over a fixed effects model to begin with [@koricheva_handbook_2013].
+
 
 ## Forest plot for random effects model
