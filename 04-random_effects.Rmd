@@ -67,7 +67,7 @@ random_effects_model_results_with_author <-
 random_effects_model_results_with_author
 ```
 
-Looking at the results from our updated random effects meta-analysis that controls for nonindependence, we see just slight shifts in these results. This is likely due to the relatively large sample size of our starting dataset. We now have an overall effect size of `r round(random_effects_model_results_with_author$b, 4)`, still suggesting a moderate decrease in richness when invasive species are present. We know this effect is significant because the p value is < 0.0001 and because the confidence interval does not overlap zero (CI = `r round(random_effect_model_results_with_author$ci.lb, 4)`, `r round(random_effect_model_results_with_author$ci.ub, 4)`.
+Looking at the results from our updated random effects meta-analysis that controls for nonindependence, we see just slight shifts in these results. This is likely due to the relatively large sample size of our starting dataset. We now have an overall effect size of `r round(random_effects_model_results_with_author$b, 4)`, still suggesting a moderate decrease in richness when invasive species are present. We know this effect is significant because the p value is < 0.0001 and because the confidence interval does not overlap zero (CI = `r round(random_effects_model_results_with_author$ci.lb, 4)`, `r round(random_effects_model_results_with_author$ci.ub, 4)`.
 
 
 
