@@ -10,10 +10,11 @@ Examples of random effects models in meta-analysis are plentiful, and researcher
 ## Random effects model example  
 Just like in the previous chapter, we'll use the example dataset for this book to walk through the steps involved in running and interpreting a random effects model in R. Then, we'll plot the results in a forest plot.
 
-First, we'll load in the `metafor` package which we'll use to run our models.
+First, we'll load in the `metafor` package which we'll use to run our models. Also, be sure that you have ggplot installed and loaded for one of the plots we'll make in this chapter.
 
 ```{r}
 library(metafor)
+library(ggplot2)
 ```
 
 Next, be sure you have the dataframe `RR_effect_sizes` in your R environment (look for it in the `environment` tab of the top right panel if you are using Rstudio). You can always re-run the R code that is in chapters 1 and 2 of this book if the dataframe isn't there.
@@ -63,6 +64,7 @@ random_effects_model_results_with_author <-
   rma.mv(yi, 
          vi, 
          random = ~ 1 | lastname, 
+         slab = paste(lastname, publication_year, sep = ""), # This line is important for when we create our forest plot later. It tells R that we want every row in our forst plot to have a label of author last name and the publication year.
          data = RR_effect_sizes)
 random_effects_model_results_with_author
 ```
@@ -70,11 +72,63 @@ random_effects_model_results_with_author
 Looking at the results from our updated random effects meta-analysis that controls for nonindependence, we see just slight shifts in these results. This is likely due to the relatively large sample size of our starting dataset. We now have an overall effect size of `r round(random_effects_model_results_with_author$b, 4)`, still suggesting a moderate decrease in richness when invasive species are present. We know this effect is significant because the p value is < 0.0001 and because the confidence interval does not overlap zero (CI = `r round(random_effects_model_results_with_author$ci.lb, 4)`, `r round(random_effects_model_results_with_author$ci.ub, 4)`.
 
 
-
-## Test for heterogenity in your data
+## Testing for heterogenity in your data
 Cochran's Q is a commonly used test for heterogeneity, and conveniently it's part of the output from `metafor`'s random effect function. This statistic gives us the difference between each of the observed effect sizes in our dataset (so these are the `yi`'s and the effect size for a fixed effects model. While there's a bit more detail to how we arrive at the Q statistic, ultimately those differences between the overall fixed effect size and each of our `yi`'s are squared so they won't be negative and added up.  One issue with Q statistic is that it always gets a higher magnitude when our sample size goes up.
 
-Another point to consider is that heterogeneity test (in addition to the Q test there is the I^2 and tau-squared tests) they may be somewhat irrelevant since, by using a random effects model and acknowledging heterogeneity in our dataset by *a priori* choosing to use a random effects model over a fixed effects model to begin with [@koricheva_handbook_2013].
+Another way to explore potential publication bias in your datasets is by creating what are called publication bias histograms. To create publication bias histograms, you need to calculate all of individual (i.e., study-level) meta-analytic effect sizes. We already calculated these in chapter 2 with *metafor*'s `escalc` function.
 
+For a reminder of what that dataframe looks like you can see:
+
+```{r}
+datatable(RR_effect_sizes, fillContainer = TRUE)
+```
+
+Then, we'll create our histogram using the `ggplot2` library. Set the x-axis as all of the different possible effect sizes in our dataset (in the table above they are labeled as `yi`) and the y-axis will show the count of each time the effect size appears in our dataset.
+
+```{r, fig.cap="A publication bias histogram where relatively symmetrical histograms indicate a lack of publication bias in your dataset"}
+pub_bias_histogram <-ggplot(RR_effect_sizes, aes(x=yi)) + 
+   geom_histogram(binwidth=0.05,color="black", fill="white") +
+   xlab("ln(Response ratio)") +
+   ylab ("Frequency of effect sizes") + 
+   theme_cowplot() +
+   theme(plot.title = element_text(size = 25, hjust = -.06, face = "bold"),
+         axis.title = element_text(size = 25, face = "bold"),
+         axis.text = element_text(size = 15)) +
+   
+   scale_y_continuous(expand = c(0,0),limits=c(0,10))
+pub_bias_histogram
+```
+
+For further information on use and to see examples of publication bias histograms in actions see [@Crystal-Ornelas2021-sg; @thapa_cover_2018]
+
+A last point to consider is that heterogeneity tests (in addition to the Q test there is the I^2 and tau-squared tests) they may be somewhat irrelevant since, by using a random effects model and acknowledging heterogeneity in our dataset by *a priori* choosing to use a random effects model over a fixed effects model to begin with [@koricheva_handbook_2013].
 
 ## Forest plot for random effects model
+Next, we'll create a forest plot to visually display the results of our random effects meta-analytic model.  
+
+```{r, fig.height= 12, fig.cap="A forest plot displaying the results of our random effects meta-analysis"}
+forest(
+  RR_effect_sizes$yi, # These are effect sizes from each row in database
+  RR_effect_sizes$vi, # These are variances from each row in database
+  annotate = FALSE, # Setting this to false prevents R from including CIs for each of the 84 effect sizes in the forest plot. Setting it to TRUE is generally a good practice, but would make this plot cluttered.
+  slab = random_effects_model_results_with_author$slab, # Along the left hand side, we want each individual effect size labeled with author names and publication years. We specified this when we calculated the summary effect size above
+  xlab = "ln(Response Ratio)", # Label for x-axis
+  cex = .8, # Text side for study labels
+  pch = 15, # shape of bars in forest plot
+  cex.lab = 1, # Size of x-axis label
+)
+
+# This is code adds in the summary effect size for your random effects meta-analysis
+addpoly(
+  random_effects_model_results_with_author, # specify the model where your summary effect comes from.
+  col = "orange", # Pick a color that makes the summary effect stand out from the other effect sizes.
+  cex = 1, # size for the text associates with summary effect
+  annotate = TRUE, # Usually, we set this to true. It makes sure effect size and CI for summary effect size is printed on forest plot.
+  mlab = "Summary" # Label for summary effect size
+)
+```
+Just like in the previous chapter, this random effect forest plot shows all of the 84 individual effect sizes calculated in our meta-analysis (the horizontal black lines) as well as the summary statistic (the overall response ratio) for our random effects model that controls for non-independence that might come from effect sizes extracted from the same manuscript.
+
+One thing that has changed in our random effects forest plot is that the results now reflect the results of our random effects model. So in the lower right hand corner of this figure we see the overall effect size of `r round(random_effects_model_results_with_author$b, 4)` again suggesting a moderate decline in richness with the presence of invasive species. And we can tell this is a significant negative association because the orange diamond at the bottom of our forest plot does not overlap zero (CI = `r round(random_effects_model_results_with_author$ci.lb, 4)`, `r round(random_effects_model_results_with_author$ci.ub, 4)`.
+
+Random effects models are helpful in accounting for the heterogeneity that is quite characteristic of studies in ecology, evolution, or the environmental sciences. With all of this heterogeneity you may want to see if there are some moderating variables within the dataset that drives the heterogeneity and explains some of the variation we see in our data. Methods for meta-regression will be explained in the next chapter.

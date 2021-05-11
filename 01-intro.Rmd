@@ -13,7 +13,7 @@ Below, I outline the the general steps of the systematic search process **in bol
 
 It is essential to outline as much of the meta-analytic process as you can before conducting the analysis. Developing these methods *a priori* rather than after you have tried to extract data from a pile of papers helps to avoid bias in the articles, analyses, and conclusions we make during the investigation
 
-```{r, echo = FALSE, fig.align="center", out.width="350px", fig.cap = "A helpful reminder"}
+```{r, echo = FALSE, fig.align="center", out.width="350px", fig.cap = "A reminder from Drake about the importance of defining your systematic review or meta-analysis before you perform the study."}
 knitr::include_graphics("https://drive.google.com/uc?id=1sQBNAy7WPr8S8kK5cO-4mLjysBfmRuQb")
 ```
 
@@ -90,7 +90,7 @@ After deciding on your inclusion criteria, it's time to sort article and then de
 
 Then move through articles always checking for consistency with your pre-defined inclusion criteria. First first by title, then abstract, then read the full text of the article and make a decision on whether to include or exclude the article. We recommend keeping track of the articles you exclude at each step using a reference manager like zotero (mentioned above and free) or endnote (great interface, but expensive). We also recommend using a Preferred Reporting Items for Systematic Review and Meta-Analysis (PRISMA) diagram for easily conveying your screening process to readers [@moher_preferred_2009]. Below is an example of a PRISMA flowchart that provides boxes in green that show the number of articles retained in each screening step and red boxes that show the number of articles excluded in each step. If you want to make your own PRISMA flowchart, we recommend either powerpoint or the R package `DiagrammeR` [@iannone_diagrammer_2018].
 
-```{r, echo=FALSE, fig.keep = "last", fig.cap = "Example of a PRISMA flowchart with 3 screening steps"}
+```{r, echo=FALSE, fig.keep = "last", fig.cap = "An example of a PRISMA flowchart showing 3 screening steps that researchers might use when deciding which publications they will use in a meta-analysis. The flowchart shows how you might choose to screen articles by titles, then abstracts, and finally the full text."}
 require(DiagrammeR)
 
 grViz("digraph flowchart {
@@ -146,7 +146,7 @@ Measurements of species richness (Outcome) | Articles must provide mean measurem
 
 Should you decide to use the PRISMA flowchart to organize your article screening process, here's an template of what the flowchart can include using example data from this book. At each screening step (green box) we indicate the number of articles screened. We also use red boxes to highlight the number of articles that we exclude at each screening step, and we also provide the most common reasons for exclusion.
 
-```{r, echo = FALSE, fig.align="center", out.width="350px", fig.cap = "Example PRISMA flowchart for invasive tree database"}
+```{r, echo = FALSE, fig.align="center", out.width="350px", fig.cap = "Example PRISMA flowchart for the invasive tree database we are using in this book."}
 knitr::include_graphics("https://drive.google.com/uc?id=1gssyo2jJCRkjSfb5Ifq1npN6pyQkGlth")
 
 ```
@@ -164,7 +164,7 @@ In my experience, data extraction spreadsheets are typically created in either M
 
 Below, you see a typical example of how I setup my data extraction spreadsheet. Just like with establishing search terms ahead of time to minimize injecting your own biases into the articles that are included in the review, it's typical to try to outline as much of the data extraction spreadsheet as possible before actually extracting the data.  In the header row, you see I am collecting some data about each article (e.g., `lastname`, `publicationyear`, `impactfactor`) as well as some data that is specific to the research that is the focus of the article (`invasivespecies` and `latinname`).  I also assigned a unique ID to each article with format of `randomnumber-firstauthor-publicationyear` and I correspondingly re-name each PDF with its assigned unique code. This helps me create a type of relational database where I'm always able to quickly search through my reference manager to find the article in question.  You'll notice that we haven't even gotten to the data needed for a meta-analysis yet, and there is already a decent amount of information we are pulling from each article.
 
-```{r, echo = FALSE, fig.align="center", out.width="250%", fig.cap = "Example of a data extraction spreadsheet"}
+```{r, echo = FALSE, fig.align="center", out.width="250%", fig.cap = "A small selection of a data extraction spreadsheet that includes headings such as 'author last name', 'publication year' and 'invasive species common name'."}
 knitr::include_graphics("images/data_extraction_spreadsheet.png")
 ```
 The data extraction spreadsheet shown above has a total of 43 columns each characterizing a different element or piece of data from the manuscript. Without delving too much into what all of those columns are, you may, especially for ecological meta-analyses, be interested in whether other variables may moderate the main effect you are investigating. For example, we could collect data on variables like:  
@@ -175,13 +175,13 @@ The data extraction spreadsheet shown above has a total of 43 columns each chara
 - sampling frequency
 - study length (in days)
 
-The list goes on, but these are a few examples of variables that, while not the main focus of our meta-analysis, can be incorproated into models to try and account for some of the variation we see in the data.
+The list goes on, but these are a few examples of variables that, while not the main focus of our meta-analysis, can be incorporated into models to try and account for some of the variation we see in the data.
 
-Now it's time to extract the data that you need for a meta-analysis. I am focusing on some common metrics to extract (mean, standard deviation [SD], and sample size[N]), but there are many others which I will not address here (e.g., pearson's r).  The data we extract here, will be useful for calculating two commonly used meta-analytic effect sizes in Ecology, Headge's g and the response ration.
+Now it's time to extract the data that you need for a meta-analysis. I am focusing on some common metrics to extract (mean, standard deviation [SD], and sample size[N]), but there are many others which I will not address here (e.g., pearson's r).  The data we extract here, will be useful for calculating two commonly used meta-analytic effect sizes in Ecology, Hedge's g and the response ration.
 
 So in order to collect these data, we create separate columns for the mean, SD, and N as you can see below. You can certainly deviate from the naming conventions in the image below, but make sure they are descriptive enough so that you know which data are from your control sites and which are from your treatment (or experimental) sites.
 
-```{r, echo = FALSE, fig.align="center", out.width="250%", fig.cap = "Example of a data extraction spreadsheet"}
+```{r, echo = FALSE, fig.align="center", out.width="250%", fig.cap = "Another example of a data extraction spreadsheet that shows the numerical data we typically extract for a meta-analysis including mean and standard deviation from the control and experimental sites."}
 knitr::include_graphics("images/mean_sd_n_extraction.png")
 ```
 

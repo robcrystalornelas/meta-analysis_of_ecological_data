@@ -1,1 +1,38 @@
 # Meta-regression
+## NOTE: *This chapter is in progress*
+
+## A brief introduction to mixed-effect meta-regression models
+If you have seen meta-analyses im scientific literature, you've likely already come across meta-regression since they are a great way of summarizing key results from a meta-analysis--especially from heterogeneous datasets.
+
+Fortunately, meta-regression builds right from the material we've covered in previous chapters.  To perform a meta-regression, we have to identifying potentially moderating variables (could be discrete or continuous) that explain some of the variation we see in the overall datasets [@Nakagawa2017-hz]. And there's definitely an argument to be made that ecological meta-analysis should incorporate some form of meta-regression since that data tend to be complex, with many potential moderating variables [@Nakagawa2012-lc].
+
+### Examples of meta-regression in ecological research
+One ecology study that involved a meta-regression used some of the exact same R packages and analytical steps we'll use in this chapter [@Salerno2021-oc]. In their work, they explored the impact of microplastics on a number of fish traits (for example growth and survival). 
+
+```{r, echo = FALSE, fig.align="center", out.width="350px", fig.cap = "Image of plastic bag and fish in the ocean"}
+knitr::include_graphics("https://drive.google.com/uc?id=1rQ4AymuqGb26cdmhOQwrV7uWiPBdSB7h")
+
+```
+
+Their overall meta-analysis found a general decrease across the many traits that they collected data on on their study.  And when they conducted a meta-analysis, they wanted to determine whether the imapcts on functional traits were more pronounced at different larval lengths (a continuous variable, measuerd in milimeters). They found that their effect size was more negative (i.e., more negative values for their effect size, Hedges' g) for greater sized *larvae*. So the impacts of microplastics on fish larvae depends on their size.
+
+**summarize second study**
+[@Sohn2016-xe]
+
+**Section on sample size**
+Before we dive into a meta-regression example, we need to make sure that the sample size of each moderating group meets a certain threshold for inclusion in our regression.  
+
+
+## Meta-regression model example
+
+As usual, we'll load the `metafor` package.
+
+```{r}
+library(metafor)
+```
+
+
+## Meta-regression with categorical variable
+
+## Meta-regression with continuous variable
+
