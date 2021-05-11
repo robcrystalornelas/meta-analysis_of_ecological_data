@@ -17,8 +17,7 @@ delete_merged_file: true
 # Preface {-}
 
 ```{r, echo = FALSE, fig.align="center", out.width="250px"}
-knitr::include_graphics("https://drive.google.com/uc?id=1NvwA1n1n8yO--FGwaq5P613ps6PW3ogP")
-
+knitr::include_graphics("https://drive.google.com/uc?id=1nAIuFRpLwwm_YU1bxBX6fHOVRAm971ar")
 ```
 
 ## Motivation for this book {-}
