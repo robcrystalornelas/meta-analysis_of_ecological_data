@@ -110,7 +110,7 @@ This project is a work in progress and I'm always open to chatting with collabor
 
 
 ## Acknowledgements {-}
-This book was created using the **bookdown** [@xie_bookdown_2019]. Thanks to the [Lockwood Lab](https://www.lockwoodlab.com) for motivating RCO to pursue meta-analysis in ecology and also for ping pong games. RCO also thanks LCO for always inspiring.
+This book was created using the **bookdown** [@xie_bookdown_2019]. Logo made with the [hexSticker](https://github.com/GuangchuangYu/hexSticker) R package.Thanks to the [Lockwood Lab](https://www.lockwoodlab.com) for motivating RCO to pursue meta-analysis in ecology and also for ping pong games. RCO also thanks LCO for always inspiring.
 
 
 ## Recommended Citation {-}
