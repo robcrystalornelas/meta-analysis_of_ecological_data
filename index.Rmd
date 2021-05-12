@@ -16,8 +16,8 @@ delete_merged_file: true
 
 # Preface {-}
 
-```{r, echo = FALSE, fig.align="center", out.width="250px"}
-knitr::include_graphics("https://drive.google.com/uc?id=1nAIuFRpLwwm_YU1bxBX6fHOVRAm971ar")
+```{r, echo = FALSE, fig.align="center", out.width="250px", fig.cap="The logo for this book includes the abbreviated name of the book, maedr, as well as an image of multicolor pixels"}
+knitr::include_graphics("https://drive.google.com/uc?id=1AwwLififWb_Z5xr1J565Q97NlO8HWSTi")
 ```
 
 ## Motivation for this book {-}
