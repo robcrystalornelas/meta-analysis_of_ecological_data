@@ -3,7 +3,7 @@
 # Meta-analysis of Ecological Data in R
 
 <p align="center">
-<img src="MAEDR_sticker_tomato.png" width="150">
+<img src="MAEDR_sticker.png" width="150">
 </p>
 
 This is the GitHub repositoriy from a book in draft form all about how to do ecological meta-analysis in R.  The chapters are still in development, but you can get a sense of the chapters planned for this book by looking at the markdown files contained in this directory.
