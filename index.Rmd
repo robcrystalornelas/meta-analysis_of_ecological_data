@@ -2,7 +2,8 @@
 title: "Meta-analysis of Ecological Data in R"
 author: "Rob Crystal-Ornelas, PhD"
 date: "`r Sys.Date()`"
-output: bookdown::pdf_book
+site: bookdown::bookdown_site
+output: bookdown::gitbook
 documentclass: book
 bibliography: ma_ecology_book.bib
 biblio-style: apalike
