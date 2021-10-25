@@ -100,29 +100,32 @@ continent_and_island_sample_size <- c(73,15)
 
 Then we can make our forest plot using the `forest` function in the `metafor` package.  As with the meta-regression model, there's so much we can customize in these forest plot diagram.  See my comments in the code below to see how I use each argument to customize the plot.
 
-```{r}
-forest_plot_continent_and_island <- forest(mix_effect_island_or_continent$b,
-                                     ci.lb = mix_effect_island_or_continent$ci.lb,
-                                     ci.ub = mix_effect_island_or_continent$ci.ub,
-                                     # ilab = oa_subgroup_sample_size,
-                                     #ilab.xpos = c(-.7),
-                                     annotate = TRUE,
-                                     xlab = "ln(Response Ratio)",
-                                     slab = c("Continent", "Island"),
-                                     cex = 2,
-                                     digits = 2,
-                                     col = "#482677FF"
+```{r, results='hide'}
+forest_plot_continent_and_island <- forest(mix_effect_island_or_continent$b, # This is our vector of two effect sizes for our 2 sub-categories
+                                     ci.lb = mix_effect_island_or_continent$ci.lb, # Confidence interval lower bounds
+                                     ci.ub = mix_effect_island_or_continent$ci.ub, # Confidence interval upper bounds
+                                     annotate = TRUE, # This tells function to list effect size and CIs for each group on our graph
+                                     xlab = "ln(Response Ratio)", # label for x-axis
+                                     slab = c("Continent", "Island"), #label for y-axis
+                                     cex = 1, # Font size for entire graph (excluding headers)
+                                     digits = 2 # Round effect size and CI to 2 digits
 )
 
-text(-.7, rev(seq(3:1)), continent_and_island_sample_size, col = "#482677FF", cex = 2)
-op <- par(cex=2, font=2)
-text(-1.25, 4.2, "Study Location")
-text(-.6, 4.2, "Sample Size")
-text(.9, 4.2, "ln(Response Ratio) [95% CI]")
-dev.off()
-
+# Then, you have to add a bit more code to get the correct labels to appear on the graph
+text(-.52, rev(seq(2:1)), continent_and_island_sample_size, cex = 1) # Code to write sample size of sub-groups on graph
+op <- par(cex=1, font=2) # Set up font for rest of graph (just the headers of the graph remain), to make bold headings, set font=2
+text(-.83, 3.1, "Study Location") # For this code, enter x-position of text, then y-position. You may have to experiment a bit.
+text(-.48, 3.1, "Sample Size")
+text(.48, 3.1, "ln(Response Ratio) [95% CI]")
 ```
 
+```{r, echo=FALSE,results='hide'}
+dev.off() # This code stops the graph from being plotted, and frees up your plotting window
+```
+
+Our forest plot helps to convey, in one concise data visualization all the results of our meta-regression. On the left of our plot, we see the two levels of our categorical variable (continent and island) as well as their respective sample sizes.  Then we see the horizontal box and whisker plots typical of meta-analysis.  The small square box for each sub-group indicates the average effect size _for that group_ and the whiskers are the associated confidence intervals.  As with all previous forest plots, because the confidence interval for the *Island* subgroup crosses the vertical dotted line, the average effect size for the island subgroup is not significant. On the right side of the plot we also provide the effect size and CI in numerical form in case readers would like to see the actual numbers rather than the box and whisker plot.
 
 ## Meta-regression with continuous variable
+Sometimes the moderating variable you want to include in a meta-analysis is continuous rather than categorical. The initial steps to create this type of meta-analysis are quite similar to the categorical meta-analysis steps, however, the functions you use to create the model and plots will be new for us.
+
 
