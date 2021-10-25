@@ -48,7 +48,7 @@ Database | Pros | Cons
 *Applying this to our example data*  
 For this meta-analysis, we used the Web of Science database to locate articles on invasive species impacts.  Due to time constraints, we couldn't include all three of the databases above.  The number of articles Web of Science alone returned took about a couple of years to sift through. That being said, we did our best to capture as many invasion impact  articles as possible by developing broad search terms.
 
-If you are going to use Google Scholar or CAB Direct, you may want to implement methods used by [@crystal-ornelas_meta-analysis_nodate; @wang_wei_citizen_2016] which select only the first 700 or 1000 articles returned from Google Scholar.  
+If you are going to use Google Scholar or CAB Direct, you may want to implement methods used by [@Crystal-Ornelas2021-hs; @wang_wei_citizen_2016] which select only the first 700 or 1000 articles returned from Google Scholar.  
 
 **3. Search terms**  
 After deciding on the search engine(s) you will use, you need to develop the search terms you'll use to locate articles within each database. You should aim to design a search that is completely repeatable by anyone who reads your manuscript.  This means not only specifying the terms you search, but also any ways that you filter the search results (e.g., date, language, topic).  

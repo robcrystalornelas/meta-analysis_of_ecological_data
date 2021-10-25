@@ -2,37 +2,127 @@
 ## NOTE: *This chapter is in progress*
 
 ## A brief introduction to mixed-effect meta-regression models
-If you have seen meta-analyses im scientific literature, you've likely already come across meta-regression since they are a great way of summarizing key results from a meta-analysis--especially from heterogeneous datasets.
+If you have seen meta-analyses in scientific articles, you've likely already come across meta-regression since they are a great way of summarizing key results from a meta-analysis--especially from heterogeneous datasets.
 
-Fortunately, meta-regression builds right from the material we've covered in previous chapters.  To perform a meta-regression, we have to identifying potentially moderating variables (could be discrete or continuous) that explain some of the variation we see in the overall datasets [@Nakagawa2017-hz]. And there's definitely an argument to be made that ecological meta-analysis should incorporate some form of meta-regression since that data tend to be complex, with many potential moderating variables [@Nakagawa2012-lc].
+Fortunately, meta-regression builds right from the material we've covered in previous chapters.  To perform a meta-regression, we have to identifying potentially moderating variables (could be discrete or continuous) that explain some of the variation we see in the overall datasets [@Nakagawa2017-hz]. And there's definitely an argument to be made that ecological meta-analysis should almost always incorporate some form of meta-regression since ecological data tend to be complex, with many potential moderating variables [@Nakagawa2012-lc].
 
 ### Examples of meta-regression in ecological research
+#### Meta-regression with microplastics
 One ecology study that involved a meta-regression used some of the exact same R packages and analytical steps we'll use in this chapter [@Salerno2021-oc]. In their work, they explored the impact of microplastics on a number of fish traits (for example growth and survival). 
 
 ```{r, echo = FALSE, fig.align="center", out.width="350px", fig.cap = "Image of plastic bag and fish in the ocean"}
 knitr::include_graphics("https://drive.google.com/uc?id=1rQ4AymuqGb26cdmhOQwrV7uWiPBdSB7h")
+```
+
+Their _overall_ meta-analysis found a general decrease across the many traits that they collected data on as part of their study.  And when they conducted a _meta-regression_, they wanted to determine whether the impacts on functional traits were more pronounced at different larval lengths (a continuous variable, measured in millimeters). They found that effect sizes were more negative (i.e., more negative values for their effect size, Hedges' g) for greater sized *larvae*. So, in general, the impacts of microplastics on fish larvae depends on their size.  
+
+#### Meta-regression with forest thinning
+We can  look at another example of how some researchers explored the potential for the practices of forest thinning to reduce potential drought stress for some locations [@Sohn2016-xe]. For a little background information, removing a select number of trees in some forests is thought to be a short-term solution to prevent mass tree die offs from drought conditions.   
+
+```{r, echo = FALSE, fig.align="center", out.width="350px", fig.cap = "Image of ground cracking due to drought. Photo credit: Jorge Barrios"}
+knitr::include_graphics("https://drive.google.com/uc?id=1JtxyRKPv6eZZk1t7oDUZkhpm1FXkr6uY")
 
 ```
 
-Their overall meta-analysis found a general decrease across the many traits that they collected data on on their study.  And when they conducted a meta-analysis, they wanted to determine whether the imapcts on functional traits were more pronounced at different larval lengths (a continuous variable, measuerd in milimeters). They found that their effect size was more negative (i.e., more negative values for their effect size, Hedges' g) for greater sized *larvae*. So the impacts of microplastics on fish larvae depends on their size.
+The authors of this study categorized the effect sizes from their _overall_ meta-analysis into two sub-categories: effect sizes that come from either "moderately" or "heavily" thinned forest stands.  What they found was that only in the heavily thinned plots did trees live longer and avoid declines due to both drought and tree age.  So while the authors found that _overall_ tree thinning did help the remaining stands of trees weather the drought period, the amount of thinning also plays a role in survival for the remaining trees.
 
-**summarize second study**
-[@Sohn2016-xe]
+## Sample size and meta-regression
+Before we dive into a meta-regression example, we need to discuss one more question that comes up for any statistical test--how do we know we have a large enough sample size to carry out a particular test? In the context of meta-regression, we need to make sure that the sample size of each moderating group meets a certain threshold for inclusion in our regression.
 
-**Section on sample size**
-Before we dive into a meta-regression example, we need to make sure that the sample size of each moderating group meets a certain threshold for inclusion in our regression.  
-
+There is some disagreement in the literature about the lowest possible sample size (i.e., number of effect sizes) a sub-group can have for inclusion into meta-regression. Some studies include a sub-group in a meta-regression with as few as 3 effect sizes [@Ferreira2016-ap] others set the lower threshold as 10 effect sizes [@Blouin2019-xu]. In my experience, I tend to take the average of this range and include sub-categories with 7 or more effect sizes [Crystal-Ornelas2021-sg]. 
 
 ## Meta-regression model example
 
-As usual, we'll load the `metafor` package.
+As usual, we'll load the `metafor` package as well as some other packages that will help us with plotting
 
 ```{r}
 library(metafor)
+library(DT)
 ```
 
+Note: the code below will not run unless you have run previous chapters of this book and/or you have `RR_effect_sizes` in your R environment (look for it in the `environment` tab of the top right panel if you are using Rstudio). Please re-run the R code that is in chapters 1 and 2 of this book if the dataframe isn't there.
 
 ## Meta-regression with categorical variable
+Our first meta-regression will be one that uses a categorical variable as a moderator. As a reminder, we have our example dataset with 88 effect sizes of invasive tree impacts on species richness.
+
+Let's take a look a look at the first 10 columns of our dataframe which contains all the effect sizes as well as many other columns of information such as the article's first author (`lastname`), taxonomic group (`invasive_species_taxonomic_group`), and whether the study took place on an island or continent (`island_or_continent`).
+
+```{r}
+datatable(RR_effect_sizes, fillContainer = TRUE)
+```
+We'll take a closer look at the categorical variable (`island_or_continent`) since we have good reason to believe that differences in impacts to biodiversity on islands may differ from mainland impacts. First, we'll double check that we have at least 7 effect sizes in both sub-groups.
+
+```{r}
+plyr::count(RR_effect_sizes$island_or_continent)
+```
+As you can see above, we have 73 effect sizes calculated for continents and 15 for islands, both of which are meet our threshold of 7 effect sizes.
+
+Next, create the mixed effects model using the `rma.mv` function in the `metafor` package.  Using this function, you'll see how we can easily specify many different "arguments" or "parameters" of the model. We specify several arguments in this metafor model run. I explain each of the selections for the different arguments that are part of the `rma.mv` function in the code chunk below.  That being said there are many different possible ways to create your models, so please read the metafor documentation to see what else you can do with this powerful function.
+
+```{r}
+mix_effect_island_or_continent <- 
+  rma.mv(
+    yi, # this is the column from our dataframe that contains calculated effect sizes
+    vi, # calculated variances
+    mods = ~ island_or_continent - 1, # Specify which moderators the model should take into account
+    random = ~ 1 | unique_article_identifier,
+    method = "REML", #Model fitting method
+    digits = 4, # round calculations to 4 digits
+    data = RR_effect_sizes
+  )
+```
+
+Earlier, I mentioned that this is a _mixed effects model_ and looking at the code above, we can explore why this is called a mixed-effects model: within one model we account both for the _fixed effect_ that we specify which is `island_or_continent' as well as the _random effect_ that comes from multiple effects sizes that were extracted from the same study.  This mixed effects model is one way that we can account for the type of pseudoreplication that is common to meta-analytic datasets, when a single study contributes more that one effect size to a dataset.
+
+To see the output of our meta-regression model we just run the object called `mix_effect_island_or_continent` that we created in the previous code chunk:
+
+```{r}
+mix_effect_island_or_continent
+```
+
+In the very first column we see the names of the two subcategories "continent" and "island" (they are appended to the variable name `island_or_continent`).  
+
+Looking at the **continent** row, we see an effect size of `r round(mix_effect_island_or_continent$b[1,1], 4)`. Which indicates a negative impact of invasive trees on species richness. However, we need to check whether the p-value is below the threshold of 0.05 to determine if this negative impact is statistically significant.  Our mixed effects model shows the the p-value for this sub-category is `r round(mix_effect_island_or_continent$pval[1], 5)`--well below the threshold.  So in summary, invasive trees on mainlands have significantly negative impacts on species richness. While it's important to know that the negative impact is significant, the Log of the Response Ratio (i.e., the ln(RR)) estimate is sometimes not the easiest to interpret.  Fortunately, there's a simple conversion from the ln(RR) to percent increase or decrease (depending on the sign of the effect). It's $$ PercentageIncreaseOrDecrease = 100 * (e^{ln(RR)}-1)$$. So when we plug in our effect size estimate of `r round(mix_effect_island_or_continent$b[1,1], 4)` to this equation we get a decrease in richness of `r round(100*(exp(mix_effect_island_or_continent$b[1,1])-1), 4)` when invasive species are present compared to locations without invasive trees.
+
+Previous findings suggests impacts of plants don't differ between island and mainland [@Vila2011-tl].
+
+After looking at the statistical output of the meta-regression, it's time to create our data visualization.  The typical visualizations for meta-regression are not that different from what we've already seen as the forest plots for _overall_ meta-analyses, with meta-regressions we will provide summary statistics for the two sub-groups as part of the forst plot.
+
+First, let's just confirm the number of effect sizes in each sub-group
+```{r}
+plyr::count(RR_effect_sizes$island_or_continent)
+```
+Then, save the sample size in each category as an object. As you'll see later, this step is important for plotting sample size numbers as part of our visualization.
+
+```{r}
+continent_and_island_sample_size <- c(73,15)
+```
+
+Then we can make our forest plot using the `forest` function in the `metafor` package.  As with the meta-regression model, there's so much we can customize in these forest plot diagram.  See my comments in the code below to see how I use each argument to customize the plot.
+
+```{r}
+forest_plot_continent_and_island <- forest(mix_effect_island_or_continent$b,
+                                     ci.lb = mix_effect_island_or_continent$ci.lb,
+                                     ci.ub = mix_effect_island_or_continent$ci.ub,
+                                     # ilab = oa_subgroup_sample_size,
+                                     #ilab.xpos = c(-.7),
+                                     annotate = TRUE,
+                                     xlab = "ln(Response Ratio)",
+                                     slab = c("Continent", "Island"),
+                                     cex = 2,
+                                     digits = 2,
+                                     col = "#482677FF"
+)
+
+text(-.7, rev(seq(3:1)), continent_and_island_sample_size, col = "#482677FF", cex = 2)
+op <- par(cex=2, font=2)
+text(-1.25, 4.2, "Study Location")
+text(-.6, 4.2, "Sample Size")
+text(.9, 4.2, "ln(Response Ratio) [95% CI]")
+dev.off()
+
+```
+
 
 ## Meta-regression with continuous variable
 

@@ -2,16 +2,14 @@
 title: "Meta-analysis of Ecological Data in R"
 author: "Rob Crystal-Ornelas, PhD"
 date: "`r Sys.Date()`"
-site: bookdown::bookdown_site
-output: bookdown::gitbook
-  #bookdown::pdf_book: default
+output: bookdown::pdf_book
 documentclass: book
-bibliography: [ma_ecology_book.bib]
+bibliography: ma_ecology_book.bib
 biblio-style: apalike
 link-citations: yes
 github-repo: robcrystalornelas/meta-analysis_of_ecological_data
-description: "A book about how to use R for the meta-analysis of ecological data"
-delete_merged_file: true
+description: A book about how to use R for the meta-analysis of ecological data
+delete_merged_file: yes
 ---
 
 # Preface {-}
