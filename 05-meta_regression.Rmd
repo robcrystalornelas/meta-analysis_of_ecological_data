@@ -128,4 +128,18 @@ Our forest plot helps to convey, in one concise data visualization all the resul
 ## Meta-regression with continuous variable
 Sometimes the moderating variable you want to include in a meta-analysis is continuous rather than categorical. The initial steps to create this type of meta-analysis are quite similar to the categorical meta-analysis steps, however, the functions you use to create the model and plots will be new for us.
 
+One of the continuous variables we include in our original database is the variable `time_since_invasion`. Let's create a meta-regression model to determine whether time since invasion has an effect on the  effect sizes in our meta-analysis. To do so, we'll use the R package `lme4`
+
+```{r}
+library(lme4)
+```
+
+Next, we can set up our meta-regression model. We'll use a function from the `lme4` package rather than one from `metafor`.
+
+```{r}
+time_since_invasion_moderator <- lmer(yi ~ (1 | focal_organic_system) + organically_managed_years, data = systems_with_more_than_five)
+summary(management_as_moderator)
+confint(management_as_moderator)
+```
+
 
