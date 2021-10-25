@@ -1,9 +1,9 @@
-[![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/) &nbsp; &nbsp; &nbsp; ![GitHub issues](https://img.shields.io/github/issues-raw/robcrystalornelas/meta-analysis_of_ecological_data) &nbsp; &nbsp; &nbsp; ![GitHub release (latest by date)](https://img.shields.io/github/v/release/robcrystalornelas/meta-analysis_of_ecological_data) &nbsp; &nbsp; &nbsp; [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4320107.svg)](https://doi.org/10.5281/zenodo.4320107) &nbsp; &nbsp; &nbsp; ![Twitter URL](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2Frob_c_ornelas) 
+[![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/) &nbsp; &nbsp; &nbsp; ![GitHub issues](https://img.shields.io/github/issues-raw/robcrystalornelas/meta-analysis_of_ecological_data) &nbsp; &nbsp; &nbsp; ![GitHub release (latest by date)](https://img.shields.io/github/v/release/robcrystalornelas/meta-analysis_of_ecological_data) &nbsp; &nbsp; &nbsp; ![Twitter URL](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2Frob_c_ornelas) 
 
 # Meta-analysis of Ecological Data in R
 
 <p align="center">
-<img src="MAEDR_sticker_tomato.png" width="150">
+<img src="MAEDR_sticker.png" width="150">
 </p>
 
 This is the GitHub repositoriy from a book in draft form all about how to do ecological meta-analysis in R.  The chapters are still in development, but you can get a sense of the chapters planned for this book by looking at the markdown files contained in this directory.
