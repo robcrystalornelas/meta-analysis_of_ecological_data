@@ -1,14 +1,13 @@
 # Meta-regression
-## NOTE: *This chapter is in progress*
 
 ## A brief introduction to mixed-effect meta-regression models
 If you have seen meta-analyses in scientific articles, you've likely already come across meta-regression since they are a great way of summarizing key results from a meta-analysis--especially from heterogeneous datasets.
 
 Fortunately, meta-regression builds right from the material we've covered in previous chapters.  To perform a meta-regression, we have to identifying potentially moderating variables (could be discrete or continuous) that explain some of the variation we see in the overall datasets [@Nakagawa2017-hz]. And there's definitely an argument to be made that ecological meta-analysis should almost always incorporate some form of meta-regression since ecological data tend to be complex, with many potential moderating variables [@Nakagawa2012-lc].
 
-### Examples of meta-regression in ecological research
-#### Meta-regression with microplastics
-One ecology study that involved a meta-regression used some of the exact same R packages and analytical steps we'll use in this chapter [@Salerno2021-oc]. In their work, they explored the impact of microplastics on a number of fish traits (for example growth and survival). 
+## Examples of meta-regression in ecological research
+### Meta-regression with microplastics
+One ecology study that involved a meta-regression used some of the exact same R packages and statistical steps we'll use in this chapter [@Salerno2021-oc]. In their work, they explored the impact of microplastics on a number of fish traits (for example growth and survival). 
 
 ```{r, echo = FALSE, fig.align="center", out.width="350px", fig.cap = "Image of plastic bag and fish in the ocean"}
 knitr::include_graphics("https://drive.google.com/uc?id=1rQ4AymuqGb26cdmhOQwrV7uWiPBdSB7h")
@@ -16,7 +15,7 @@ knitr::include_graphics("https://drive.google.com/uc?id=1rQ4AymuqGb26cdmhOQwrV7u
 
 Their _overall_ meta-analysis found a general decrease across the many traits that they collected data on as part of their study.  And when they conducted a _meta-regression_, they wanted to determine whether the impacts on functional traits were more pronounced at different larval lengths (a continuous variable, measured in millimeters). They found that effect sizes were more negative (i.e., more negative values for their effect size, Hedges' g) for greater sized *larvae*. So, in general, the impacts of microplastics on fish larvae depends on their size.  
 
-#### Meta-regression with forest thinning
+### Meta-regression with forest thinning
 We can  look at another example of how some researchers explored the potential for the practices of forest thinning to reduce potential drought stress for some locations [@Sohn2016-xe]. For a little background information, removing a select number of trees in some forests is thought to be a short-term solution to prevent mass tree die offs from drought conditions.   
 
 ```{r, echo = FALSE, fig.align="center", out.width="350px", fig.cap = "Image of ground cracking due to drought. Photo credit: Jorge Barrios"}
@@ -31,7 +30,7 @@ Before we dive into a meta-regression example, we need to discuss one more quest
 
 There is some disagreement in the literature about the lowest possible sample size (i.e., number of effect sizes) a sub-group can have for inclusion into meta-regression. Some studies include a sub-group in a meta-regression with as few as 3 effect sizes [@Ferreira2016-ap] others set the lower threshold as 10 effect sizes [@Blouin2019-xu]. In my experience, I tend to take the average of this range and include sub-categories with 7 or more effect sizes [Crystal-Ornelas2021-sg]. 
 
-## Meta-regression model example
+## Meta-regression with categorical variable
 
 As usual, we'll load the `metafor` package as well as some other packages that will help us with plotting
 
@@ -42,7 +41,6 @@ library(DT)
 
 Note: the code below will not run unless you have run previous chapters of this book and/or you have `RR_effect_sizes` in your R environment (look for it in the `environment` tab of the top right panel if you are using Rstudio). Please re-run the R code that is in chapters 1 and 2 of this book if the dataframe isn't there.
 
-## Meta-regression with categorical variable
 Our first meta-regression will be one that uses a categorical variable as a moderator. As a reminder, we have our example dataset with 88 effect sizes of invasive tree impacts on species richness.
 
 Let's take a look a look at the first 10 columns of our dataframe which contains all the effect sizes as well as many other columns of information such as the article's first author (`lastname`), taxonomic group (`invasive_species_taxonomic_group`), and whether the study took place on an island or continent (`island_or_continent`).
@@ -57,6 +55,7 @@ plyr::count(RR_effect_sizes$island_or_continent)
 ```
 As you can see above, we have 73 effect sizes calculated for continents and 15 for islands, both of which are meet our threshold of 7 effect sizes.
 
+### Creating a model
 Next, create the mixed effects model using the `rma.mv` function in the `metafor` package.  Using this function, you'll see how we can easily specify many different "arguments" or "parameters" of the model. We specify several arguments in this metafor model run. I explain each of the selections for the different arguments that are part of the `rma.mv` function in the code chunk below.  That being said there are many different possible ways to create your models, so please read the metafor documentation to see what else you can do with this powerful function.
 
 ```{r}
@@ -80,13 +79,15 @@ To see the output of our meta-regression model we just run the object called `mi
 mix_effect_island_or_continent
 ```
 
+### Presenting results
 In the very first column we see the names of the two subcategories "continent" and "island" (they are appended to the variable name `island_or_continent`).  
 
 Looking at the **continent** row, we see an effect size of `r round(mix_effect_island_or_continent$b[1,1], 4)`. Which indicates a negative impact of invasive trees on species richness. However, we need to check whether the p-value is below the threshold of 0.05 to determine if this negative impact is statistically significant.  Our mixed effects model shows the the p-value for this sub-category is `r round(mix_effect_island_or_continent$pval[1], 5)`--well below the threshold.  So in summary, invasive trees on mainlands have significantly negative impacts on species richness. While it's important to know that the negative impact is significant, the Log of the Response Ratio (i.e., the ln(RR)) estimate is sometimes not the easiest to interpret.  Fortunately, there's a simple conversion from the ln(RR) to percent increase or decrease (depending on the sign of the effect). It's $$ PercentageIncreaseOrDecrease = 100 * (e^{ln(RR)}-1)$$. So when we plug in our effect size estimate of `r round(mix_effect_island_or_continent$b[1,1], 4)` to this equation we get a decrease in richness of `r round(100*(exp(mix_effect_island_or_continent$b[1,1])-1), 4)` when invasive species are present compared to locations without invasive trees.
 
 Previous findings suggests impacts of plants don't differ between island and mainland [@Vila2011-tl].
 
-After looking at the statistical output of the meta-regression, it's time to create our data visualization.  The typical visualizations for meta-regression are not that different from what we've already seen as the forest plots for _overall_ meta-analyses, with meta-regressions we will provide summary statistics for the two sub-groups as part of the forst plot.
+### Making a figure
+After looking at the statistical output of the meta-regression, it's time to create our data visualization.  The typical visualizations for meta-regression are not that different from what we've already seen as the forest plots for _overall_ meta-analyses, with meta-regressions we will provide summary statistics for the two sub-groups as part of the forest plot.
 
 First, let's just confirm the number of effect sizes in each sub-group
 ```{r}
@@ -125,21 +126,83 @@ dev.off() # This code stops the graph from being plotted, and frees up your plot
 
 Our forest plot helps to convey, in one concise data visualization all the results of our meta-regression. On the left of our plot, we see the two levels of our categorical variable (continent and island) as well as their respective sample sizes.  Then we see the horizontal box and whisker plots typical of meta-analysis.  The small square box for each sub-group indicates the average effect size _for that group_ and the whiskers are the associated confidence intervals.  As with all previous forest plots, because the confidence interval for the *Island* subgroup crosses the vertical dotted line, the average effect size for the island subgroup is not significant. On the right side of the plot we also provide the effect size and CI in numerical form in case readers would like to see the actual numbers rather than the box and whisker plot.
 
-## Meta-regression with continuous variable
-Sometimes the moderating variable you want to include in a meta-analysis is continuous rather than categorical. The initial steps to create this type of meta-analysis are quite similar to the categorical meta-analysis steps, however, the functions you use to create the model and plots will be new for us.
+## Meta-regression with continuous variable  
+Sometimes the moderating variable you want to include in a meta-regression is continuous rather than categorical. The initial steps to create this type of meta-analysis are quite similar to the categorical meta-analysis steps, however, the functions you use to create the model and plots will be new for us.
 
-One of the continuous variables we include in our original database is the variable `time_since_invasion`. Let's create a meta-regression model to determine whether time since invasion has an effect on the  effect sizes in our meta-analysis. To do so, we'll use the R package `lme4`
+### Example of meta-regression with continuous variable
+One of the continuous variables we include in our original database is the variable `time_since_invasion`. Time since invasion is in important concept in invasion science, since the longer duration a novel species exists in a new location, the greater the potential impact it may have on the ecosystem. Some meta-analysts have already taken to investigating this question through data synthesis, so let's take a quick look at their meta-analysis which aggregated data from studies taking place in greenhouses [@Iacarella2015-ii].
+
+```{r, echo = FALSE, fig.align="center", out.width="350px", fig.cap = "Series of glass-walled greenhouses. Photo credit: Quistnix"}
+knitr::include_graphics("https://drive.google.com/uc?id=1nkxqzKANhn1CDIR_AiOF-CROQEl2wtqT")
+```
+
+In their study, the authors brought together data from 26 articles that measured competition between native and invasive plants. Even though the studies all took place in controlled greenhouse settings, they could determine the number of years that the original _collection site_ had been invaded.  Ultimately, they found that competition between invasive and native plants were actually strongest in the earlier years of invasion while over time the competitive effects weakened. They took their meta-regression a step further and found that changes in impact magnitude over time decreased more sharply for grasses compared to other plant groups in their meta-analysis.
+
+### Creating a model  
+Let's create a meta-regression model to determine whether time since invasion `time_since_invasion` moderates invasive species impacts on biodiversity (measured as species richness `yi` in our database). To do so, we'll use the R package `lme4`.
 
 ```{r}
 library(lme4)
+library(ggplot2)
+library(cowplot)
 ```
 
-Next, we can set up our meta-regression model. We'll use a function from the `lme4` package rather than one from `metafor`.
+Next, we can set up our meta-regression model. We'll use a function from the `lme4` package rather than a function from `metafor`. As you can see in the code below, the function `lmer` requires just a small number of inputs. Refer to the comments in the code chunk below to see what each component of the function does.
+```{r}
+time_since_invasion_meta_reg <- lmer(yi ~ # Effect sizes
+                                       (1 | unique_article_identifier) + # Random effect is the study (to account for potential pseudoreplicaton) 
+                                       time_since_invasion, # Fixed effect is time since invasion.
+                                     data = RR_effect_sizes) # The data frame that contains all the vectors of numbers we call in this function
+summary(time_since_invasion_meta_reg) # This prints the results of our meta-regression
+```
+
+There are many results to sort through, but we'll focus on just a few here! First, note that in the results under "number of observations" we have dropped down from 88 effect sizes in our main dataset to only 50. This is because for some studies it was unclear how long the study site had been invaded, and so these effect sizes were removed from our model calculations.  Later chapters will discuss the possibility of imputing these types of missing values.  
+
+The main results of a mixed effect model you may choose to highlight in a presentation or a publication are listed in the table below. One other output that is not provided by the `summary` function above, but that will be useful for our results table is confidence interval estimates. We can get those by running the following code.
 
 ```{r}
-time_since_invasion_moderator <- lmer(yi ~ (1 | focal_organic_system) + organically_managed_years, data = systems_with_more_than_five)
-summary(management_as_moderator)
-confint(management_as_moderator)
+confint(time_since_invasion_meta_reg)
 ```
 
+Onto the interpreting all of the meta-regression model results. They are often presented in a table like the one below, and can get more complex if more moderators are added to the mixed effects regression or even interactions between moderators (e.g., time_since_invasion * country).   
 
+### Presenting results
+The first result we present in the table below is the model's **beta value** or slope of the best fit line in this mixed effects meta-regression. We see that, unlike the greenhouse study we discussed above, the slope of our regression line is negative, meaning that as time since invasion increased, the effect sizes in our database become _more negative_. In other words, the longer the invasive tree had been in a location, the worse its effects on species richness. Though the magnitude of the effect is relatively weak (0.0012) this is typical of large heterogeneous ecological datasets like the one we are using. The _confidence interval_ skews towards negative values, but includes 0, we can't fully say with certainty that the overall negative decline is significant in our model. Lastly, the large _standard deviation_ of the random effect means that there's relatively high variation from one study to the next.
+
+| Fixed effect | Beta    | SE       | Lower-95| Upper-95| Random Effect| RE SD|
+|--------------|:----:|---------:|---------:|---------:|---------:|---------:|
+| time since invasion      |-0.0012  | 0.0011 |-0.0033|0.00091|Study ID| 0.4205|
+
+### Making a figure
+While the table is helpful for concisely presenting results, visualizing all of this information in figure is common as well.  The code from `ggplot2` below plots all the available effects sizes by their time since invasion and magnitude, then fits a line to the points. I like to add in the horizontal red line to show the "line of no effect" and really emphasize when confidence intervals or effect sizes are close to or overlap zero.
+
+```{r}
+time_since_invasion_plot <-
+  ggplot(data = RR_effect_sizes, # Bring in the dataframe containing effect sizes
+         aes(
+           x = time_since_invasion, # Plot time along x-axis
+           y = yi, # Effect sizes along y-axis
+         )) +
+  geom_point(size = 3, # Make points on plot relatively large
+             alpha = .8, # Make points on plot slightly transparent in case they overlap
+             position = "jitter") + # Jitter the points so they don't overlap
+  geom_smooth(
+    method = lm,
+    se = TRUE,
+    size = 1,
+    alpha = .15,
+    fill = "#33638DFF"
+  ) +
+  theme_cowplot() + # I like this plot theme for it's simplicity
+  xlab("Time since invasion (in years)") + # Label the axes
+  ylab("ln(Response ratio)") +
+  geom_hline(yintercept=0, linetype="dashed", color = "red", size =0.5) + # add in horizontal red line to show "line of no effect"
+  theme( # More theme customizations so that the plot is ready to present in a paper/presentation.
+    axis.title = element_text(size = 25, face = "bold"),
+    title = element_text(size = 25, face = "bold"),
+    axis.text = element_text(size = 25),
+    legend.title = element_text(size = 25),
+    legend.text = element_text(size = 25))
+time_since_invasion_plot
+```
+As you can see in the plot above, at the very earliest years after invasion effect sizes were not significantly different from zero. This indicates that, on average, invasive species did not have significant impacts on richness immediately. However, in the middle time ranges (e.g., 100-300 years) the confidence interval (gray shading) fully dips below the red line indicating a significant decline in richness.  Then as we move further along the x-axis though the remaining few point suggest large negative impacts, the data points are limited and variable, so the confidence interval flares out again.
