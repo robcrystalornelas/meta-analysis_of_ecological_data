@@ -1,1 +1,59 @@
 # Publication bias
+
+## A brief introduction to publication bias
+
+Regardless of the discipline that you research, publication bias is something you will have to confront when conducting your meta-analysis and justifying your results. One definition of publication bias is:
+
+> the degree of divergence between the relative actual merit of a given publciation and its relative perceived merit [@Lortie2007-yn]
+
+In their review, Lortie et al. also summarize other definitions of publication bias they located throughout the meta-analysis literature. For those wanting a deeper dive into publication bias that we are able to present here, there is an excellent book chapter in the _Handbook of Meta-analysis in Ecology and Evolution_ [@Jennions2013-mt]. The chapter in _The Handbook_ gives a high-level summary of the various types of publication biases in  Ecology and Evolution.
+
+For now, we'll also consider a second definition of publication bias from [@Jennions2013-mt] define publication bias as:
+
+> occur[ing] when the published literature reports results that systemtatically differ from those of all studies and statistical tests conducted; the result is that false conclusions are drawn (based on [@Rothstein2006-iq])
+
+Just from these two related, but slightly divergent definitions of publication bias, you can see that publication bias arises through many different mechanisms, some of which we'll discuss below. No matter how we get there, publication bias results in a misrepresentation of the actual underlying effect. As meta-analysts, we want to limit publication bias as much as we can, while also recognizing the publication biases that can potentially remain within our datasets.
+
+## Where does publication bias come from?
+Publication bias is often used as a catch-all term for the many "sub-biases" that can contribute to an overall difference between a mean effect presented in a meta-analysis and the true underlying effect of the study system.  In the table below is a summary of several types of biases found in meta-analyses, a brief description, and a citation for where the type of bias was defined.
+
+| Type of bias | Description |More information|
+| :------|:------------------|:--------|
+| Reporting bias | Occurs when effect sizes go unpublished (or take much longer to get published) because they were "weeded out" when putting a manuscript together or during the review process. For example, because results were non-significant. |[@Jennions2013-mt; @Song2010-ff]|
+| Dissemination bias | Text |[@Jennions2013-mt]|
+| Narrow sense publication bias | Text |[@Jennions2013-mt]|
+| Time-lag bias| High magnitude results are published faster than lower magnitude results. | [@Trikalinos2005-jm; @crystal-ornelas_cumulative_2020] | 
+
+## The power of publication bias
+We can take a look one example from a meta-analysis that shows just how publication bias can influence the results of a meta-analysis [@Sanchez-Tojar2018-ri].  The collected as many effect sizes as they could related to status signalling of male house sparrows.  
+
+```{r, echo = FALSE, fig.align="center", out.width="350px", fig.cap = "Photo of a male house sparrow. Photo credit: allaboutbirds.com"}
+knitr::include_graphics("https://drive.google.com/uc?id=16XRbryLILMUFaQctTDSg9uw9WSyHXqRT")
+```
+
+They test publication bias in several ways:
+
+- First, the authors created what are called *funnel plots* [@Sterne2001-vv] (see section on funnel plots below) to identify whether plotted residuals of their meta-analytic models are symmetrical when they are plotted against "the inverse of their precision". Data sets without much publication bias will have a relatively symmetrical funnel or cone shape when plotted, whereas funnel plots with publication bias will have an asymmetrical funnel when plotted. The figure below shows
+
+```{r, echo = FALSE, fig.align="center", out.width="800px", fig.cap = "Example of (A) symmetrical and (B) asymmetrical funnel plot when testing for publication bias."}
+knitr::include_graphics("https://drive.google.com/uc?id=1tvWWLnJyKTJfTJJPy1D7nwCNxCNiDPQW")
+```
+
+## Testing for publication bias
+Taking the opportunity to adapt a lyric from [David Byrne](https://en.wikipedia.org/wiki/David_Byrne): "You may ask yourself [does my meta-analytic dataset likely have publication bias?]." To which we'll have a general response of an emphatic **yes!**.  
+
+There are so many ways that publication bias can occur in the published literature--it's extremely likely that your meta-analysis is not beset by one or more types of publication biases. However, over the past several decades researchers have proposed many ways of assessing publication bias within datasets, and we'll discuss and show examples of them here.
+
+
+### Funnel plots
+
+[@Sterne2001-vv]
+
+### Publication bias histograms
+
+###
+
+###
+
+
+
