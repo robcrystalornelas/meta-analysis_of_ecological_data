@@ -24,4 +24,4 @@ The contents of this repository is licensed with a CCby4.0 license.
 ## Recommended citation
 If you use material from this project to help with your systematic review or meta-analysis, please cite this version of the repository and associated book:
 
-Crystal-Ornelas, R. (2020). robcrystalornelas/meta-analysis_of_ecological_data: First release (Version v0.1.0). Zenodo. http://doi.org/10.5281/zenodo.4320107
+Crystal-Ornelas, R. (2021). robcrystalornelas/meta-analysis_of_ecological_data: v0.2.1 Zenodo. http://doi.org/10.5281/zenodo.5608413
