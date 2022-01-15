@@ -42,16 +42,48 @@ knitr::include_graphics("https://drive.google.com/uc?id=1tvWWLnJyKTJfTJJPy1D7nwC
 ## Testing for publication bias
 Taking the opportunity to adapt a lyric from [David Byrne](https://en.wikipedia.org/wiki/David_Byrne): "You may ask yourself [does my meta-analytic dataset likely have publication bias?]." To which we'll have a general response of an emphatic **yes!**.  
 
-There are so many ways that publication bias can occur in the published literature--it's extremely likely that your meta-analysis is not beset by one or more types of publication biases. However, over the past several decades researchers have proposed many ways of assessing publication bias within datasets, and we'll discuss and show examples of them here.
-
+There are so many ways that publication bias can occur in scientific literature--it's extremely likely that your meta-analysis is  beset by one or more types of publication biases. However, over the past several decades researchers have proposed many ways of assessing publication bias within datasets, and we'll discuss and show examples of them here.
 
 ### Funnel plots
 
-[@Sterne2001-vv]
+One of the most popular ways to visually assess publication biases is by creating a funnel plot [@Sterne2001-vv]. Fortunately there is some great code built into the metafor package that can help us create funnel plots 
+
+To create several versions of the funnel plot, we'll need to take the results of our random effects model that we created back in chapter 4 `random_effect_model_results`.
+
+```{r}
+### First, run this code to create a 2x2 grid within the plotting window, so we can make 4 forest plots at the same time
+par(mfrow=c(2,2))
+ 
+### Then, make 4 different funnel plots
+funnel(random_effect_model_results, main="Standard Error")
+funnel(random_effect_model_results, yaxis="vi", main="Sampling Variance")
+funnel(random_effect_model_results, yaxis="seinv", main="Inverse Standard Error")
+funnel(random_effect_model_results, yaxis="vinv", main="Inverse Sampling Variance")
+```
+As you can see in these figures, the way the metafor creates funnel plots is by plotting on the y-axis the individual effect sizes, and on the x-axis the different source of error for each of the effect sizes. As mentioned in the metafor documentation [@Viechtbauer2017-xj] a meta-analysis without publication bias would have all points falling roughly symmetrical on either side of the funnel *and* within the "confidence intervals" that form the two dotted lines that make up the funnel.
+
+The metaviz package also provides some useful functions for creating forest plots which though we do not explore below may be useful should you choose to both create forest plots within metaviz as well as funnel plots [@kossmier_metaviz:_2018]. [Here's a link to a metaviz tutorial](https://cran.r-project.org/web/packages/metaviz/vignettes/metaviz.html#creating-funnel-plots-with-viz_funnel). As with the funnel plots from the metafor package above, the general expectation with the metaviz funnel plots are the same--general symmetry around the funnel with most points falling somewhere within the funnel rather than outside.
+
+Despite the popularity of funnel plots that have, for decades, been used to explore publication bias meta-analyses, they have come under scrutiny. The main critiques that argue against using funnel plots is that they are less useful when sample sizes are small and/or heterogeneity is high within the effect sizes included in the meta-analysis [@Ioannidis2007-kw; @Lau2006-mt]. 
 
 ### Publication bias histograms
+Another way to visually assess publication bias is though publication bias histograms [@thapa_cover_2018; @Crystal-Ornelas2021-sg]. We can create the histogram using the package ggplot2, and setting the x-axis of the graph as the effect sizes contained in the data frame `RR_effect_sizes`. The y-axis will simply be a count of all of the effect sizes in your dataframe. What we are looking for in these publication bias histograms is not all that different from what we looked for with the funnel plots. A dataset that lacks publication bias will have a generally normal distribution around the midpoint of the histogram. This shows that the dataset contains a roughly equal amount of positive and negative effect sizes at a roughly equal range of values.
 
-###
+```{r}
+pub_bias_histogram <-ggplot(RR_effect_sizes, aes(x=yi)) + 
+  geom_histogram(binwidth=0.05, color="black", fill="white") +
+  xlab("ln(Response ratio)") +
+  ylab ("") + 
+  theme_cowplot() +
+  theme(plot.title = element_text(size = 25, hjust = -.06, face = "bold"),
+        axis.title = element_text(size = 25, face = "bold"),
+        axis.text = element_text(size = 15)) +
+    scale_y_continuous(expand = c(0,0),limits=c(0,10))
+pub_bias_histogram
+```
+
+
+### Failsafe ratio
 
 ###
 

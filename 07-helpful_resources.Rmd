@@ -13,7 +13,7 @@ There are many other websites, books, and resources that exist to help researche
 Reference managers help you organize the many PDFs you will surely have to read through when conducting a meta-analysis. They are programs or sometimes websites where you upload your PDFs, and then create sub-folders to help organize all those PDFs.  Even a highly organized Google Drive folder, at some point, becomes unwieldy doing the many stages of screening articles and extracting data. Once I locate potential articles for a systematic review or meta-analysis, I quickly move to doing most of the remaining article screening and reading from within my reference manager.  
 There are many considerations you should take into account when choosing a reference manager including: price, integration with certain programs (e.g., Word, google docs), and whether your most frequent collaborators already have a preferred reference manager.  
 
-```{r, figures-side, fig.show="hold", out.width="30%"}
+```{r, echo = FALSE,figures-side, fig.show="hold", out.width="30%"}
 par(mar = c(4, 4, .1, .1))
 knitr::include_graphics("https://www.zotero.org/support/_media/logo/zotero_256x256x32.png")
 knitr::include_graphics("https://drive.google.com/uc?id=15n7EKaFT1UzE-ERUIjYzzaNBnpKeaX8p")
